@@ -1,0 +1,13 @@
+{
+    "MAILBAR.INBOX": "Inbox",
+    "MAILBAR.OUTBOX": "Outbox",
+    "MAILBAR.FAV": "Favourites",
+    "MAILBAR.DRAFTS": "Drafts",
+    "MAILBAR.DEL": "Deleted",
+    "MAILBAR.IMPORTANT": "Important",
+    "MAILBAR.WORK": "Work",
+    "MAILBAR.TASK": "Task",
+    "MAILBAR.BUSINESS": "Business",
+    "MAILBAR.COMPOSE": "Compose message"
+
+}

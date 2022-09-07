@@ -1,0 +1,29 @@
+.sidebar_icon {
+  font-size: 19px;
+  transform: translateY(1.5px);
+  cursor: pointer;
+  margin-right: 12px;
+}
+.avatar {
+  border-radius: 100%;
+  transform: scale(0.6);
+}
+.normalBG {
+  transition: all linear 0.2s;
+}
+.selectedBG,
+.normalBG:hover {
+  background-color: #eef0ff;
+}
+.icon {
+  cursor: pointer;
+  color: #5569ff;
+  padding: 5px;
+  padding-bottom: 2px;
+  transition: all linear 0.2s;
+  border-radius: 5px;
+}
+
+.icon:hover {
+  background-color: #e3e8fb;
+}

@@ -1,0 +1,26 @@
+.modalLanguage {
+  position: absolute;
+  top: 17px;
+  right: 170px;
+  width: 220px;
+  border-radius: 10px;
+  outline: none !important;
+  transition: all linear 0.3s;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 15px;
+}
+.languageItem,
+.selectedLanguage {
+  margin-top: 15px;
+  cursor: pointer;
+  display: flex;
+  border-radius: 10px;
+  transition: all linear 0.2s;
+  padding: 10px 20px;
+}
+.languageItem:hover,
+.selectedLanguage {
+  background-color: #e3e5fa;
+  color: #5569ff;
+}

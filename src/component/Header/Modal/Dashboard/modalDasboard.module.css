@@ -1,0 +1,30 @@
+.modalContent {
+  position: absolute;
+  top: 20px;
+  left: 400px;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #1c2d43;
+  padding: 30px;
+  outline: none !important;
+}
+.header_dashboard_item {
+  padding: 10px 17px;
+  margin-top: 20px;
+  width: 47%;
+  height: 100px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.first3option,
+.lastoption {
+  padding-left: 3px;
+  padding-top: 8px;
+}
+.lastoption {
+  padding-left: 0;
+}

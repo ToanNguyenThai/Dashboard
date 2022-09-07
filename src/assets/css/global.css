@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+.MuiBackdrop-root {
+  background-color: unset !important;
+}
+.tooltip {
+  width: 100px !important;
+}
