@@ -1,5 +1,11 @@
 {
-    "SIDEBAR.HOME": "Home",
-    "SIDEBAR.MAIL": "Mail box"
- 
+  "SIDEBAR.GENERAL": "GENERAL",
+  "SIDEBAR.APPLICATION": "Application",
+  "SIDEBAR.MAIL": "Mail box",
+  "SIDEBAR.CALENDAR": "Calendar",
+  "SIDEBAR.FILE": "File manager",
+  "SIDEBAR.DASHBOARD": "Dashboards",
+  "SIDEBAR.REPORTS": "Reports",
+  "SIDEBAR.PRODUCTS": "Products",
+  "SIDEBAR.CRYPTO": "Crypto"
 }

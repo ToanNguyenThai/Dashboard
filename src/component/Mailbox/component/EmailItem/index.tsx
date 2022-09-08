@@ -84,7 +84,7 @@ export default function EmailItem({
       <Box
         sx={{
           display: "flex",
-          width: "11%",
+          width: "7%",
         }}
       >
         {email.important && (
@@ -111,7 +111,7 @@ export default function EmailItem({
 
       <Box
         sx={{
-          width: "16%",
+          width: "20%",
           display: "flex",
           alignItems: "center",
         }}
@@ -130,7 +130,7 @@ export default function EmailItem({
 
       <Box
         sx={{
-          width: "50%",
+          width: "45%",
         }}
         onClick={() => navigate(`/mail/details/${email.id}`)}
       >

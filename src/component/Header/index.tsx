@@ -84,6 +84,7 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "10px 20px",
+          paddingRight: "0",
           zIndex: "10",
         }}
       >

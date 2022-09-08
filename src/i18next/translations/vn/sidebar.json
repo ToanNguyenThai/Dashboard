@@ -1,4 +1,11 @@
 {
-    "SIDEBAR.HOME": "Trang chủ",
-    "SIDEBAR.MAIL": "Hộp thư"
+  "SIDEBAR.GENERAL": "CHUNG",
+  "SIDEBAR.APPLICATION": "Ứng dụng",
+  "SIDEBAR.MAIL": "Hộp thư",
+  "SIDEBAR.CALENDAR": "Lịch",
+  "SIDEBAR.FILE": "Quản lý file",
+  "SIDEBAR.DASHBOARD": "Bảng điều khiển",
+  "SIDEBAR.REPORTS": "Báo cáo",
+  "SIDEBAR.PRODUCTS": "Sản phẩm",
+  "SIDEBAR.CRYPTO": "Tiền điện tử"
 }

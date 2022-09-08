@@ -14,3 +14,10 @@ a {
 .tooltip {
   width: 100px !important;
 }
+.Mui-expanded {
+  margin: 10px 0 !important;
+  min-height: 0 !important;
+}
+.MuiAccordionDetails-root {
+  padding: 0 !important;
+}
