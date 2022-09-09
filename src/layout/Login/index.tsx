@@ -107,7 +107,7 @@ export default function Login() {
             </Box>
           </CustomWidthTooltip>
 
-          <CustomWidthTooltip title="Json Web Token" arrow placement="top">
+          <CustomWidthTooltip title="AWS Amplify" arrow placement="top">
             <Box
               style={{
                 width: "70px",
