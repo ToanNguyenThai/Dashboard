@@ -141,7 +141,7 @@ export default function Login() {
       <Box
         sx={{
           position: "absolute",
-          left: "60%",
+          left: "62%",
           top: "50%",
           transform: "translate(-50%, -50%)",
         }}
@@ -151,7 +151,7 @@ export default function Login() {
             width: 530,
             backgroundColor: "white",
             borderRadius: "10px",
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
             padding: "50px 40px",
           }}
         >
