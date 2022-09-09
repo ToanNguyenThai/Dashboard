@@ -1,8 +1,14 @@
 import { useEffect } from "react";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import {
+  Box,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
+  Typography,
+  TextField,
+  Button,
+} from "@mui/material";
+
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,6 +53,7 @@ export default function Login() {
       },
     },
   };
+
   return (
     <Box
       sx={{
@@ -75,7 +82,10 @@ export default function Login() {
         </Typography>
         <form style={{ marginTop: "40px" }}>
           <Controller
-            rules={{ required: true }}
+            rules={{
+              required: true,
+              pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+            }}
             name={"email"}
             control={control}
             defaultValue="tokio@gmail.com"
@@ -93,7 +103,10 @@ export default function Login() {
                   id="outlined-required"
                   error={errors.email !== undefined}
                   helperText={
-                    errors.email !== undefined && "This field is required"
+                    (errors?.email?.type == "required" &&
+                      "This field is required") ||
+                    (errors?.email?.type == "pattern" &&
+                      "Please enter valid email")
                   }
                 />
               </Box>
@@ -127,6 +140,26 @@ export default function Login() {
             )}
           />
 
+          <Controller
+            rules={{ required: true }}
+            name={"terms"}
+            control={control}
+            render={({ field: { onChange } }) => (
+              <FormGroup sx={{ marginTop: "20px" }}>
+                <FormControlLabel
+                  onChange={onChange}
+                  control={<Checkbox />}
+                  label="I accept the terms and conditions."
+                />
+                {errors.terms !== undefined && (
+                  <span className={style.invalid}>
+                    You must agree to our terms and conditions
+                  </span>
+                )}
+              </FormGroup>
+            )}
+          />
+
           <Button
             onClick={handleSubmit(onSubmit)}
             className={style.mybutton}
@@ -134,7 +167,7 @@ export default function Login() {
             variant="contained"
           >
             {" "}
-            Sign in
+            Sign In
           </Button>
         </form>
       </Box>

@@ -7,9 +7,15 @@
   height: 50px;
   margin-top: 40px !important;
   border-radius: 10px !important;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 15px !important;
+  font-weight: 600 !important;
   background-color: #5569ff !important;
-
-  text-transform: unset;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: unset !important;
+}
+.invalid {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 12px !important;
+  margin-left: 14px;
+  color: #d32f2f;
 }
