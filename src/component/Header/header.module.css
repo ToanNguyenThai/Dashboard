@@ -28,7 +28,7 @@
   background-color: #eff1f5;
   color: #585d7f;
   border-radius: 10px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--main-font);
   font-weight: 700;
   font-size: 14px;
   transition: all linear 0.2s;

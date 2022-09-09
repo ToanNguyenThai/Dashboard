@@ -23,7 +23,7 @@
 .field_title,
 .accordion_text {
   font-size: 14px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--main-font);
   font-weight: 600;
   color: #b5b8bd;
 }

@@ -18,7 +18,7 @@
 
 .sidebar_text {
   font-size: 13px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--main-font);
   font-weight: 600;
   color: black;
   text-transform: capitalize;
@@ -31,7 +31,7 @@
 .sidebar_number {
   font-size: 13px;
   color: #5569ff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--main-font);
   padding: 5px 7px;
   padding-top: 3px;
   border-radius: 10px;

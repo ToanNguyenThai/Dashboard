@@ -3,7 +3,7 @@
   border-color: #d3d3d3;
 }
 .cbLabel {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--main-font);
   font-weight: 600;
   position: relative;
   bottom: 1px;

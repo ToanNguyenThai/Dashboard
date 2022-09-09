@@ -1,21 +1,76 @@
 .customTextField fieldset {
-  border-radius: 10px;
+  border-radius: 13px;
   border-color: #d3d3d3;
 }
 .mybutton {
   width: 100%;
-  height: 50px;
-  margin-top: 40px !important;
+  height: 48.25px;
+  margin-top: 30px !important;
   border-radius: 10px !important;
   font-size: 15px !important;
   font-weight: 600 !important;
   background-color: #5569ff !important;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--main-font);
   text-transform: unset !important;
 }
 .invalid {
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  font-size: 12px !important;
-  margin-left: 14px;
+  font-weight: 600;
+  font-size: 14px !important;
   color: #d32f2f;
+}
+.formControlLabel {
+  font-size: 14px;
+}
+.introduce {
+  width: 440px;
+  height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 54px;
+}
+.bigTitle {
+  margin-top: 35px;
+  font-weight: 600;
+  font-family: var(--main-font);
+  font-size: 34px;
+  color: #223354;
+}
+.circle_img_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+.circle_img {
+  border-radius: 100%;
+  border: 1px solid white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all linear 0.2s;
+}
+.circle_img:hover {
+  border-color: #5569ff;
+}
+.circle_img img {
+  width: 70%;
+  height: 70%;
+}
+.desc {
+  font-size: 14px !important;
+  color: rgba(34, 51, 84, 0.7) !important;
+  font-weight: 400 !important;
+  line-height: 1.75 !important;
+}
+.desc_title {
+  font-size: 16px !important;
+  color: black !important;
+  font-weight: 600 !important;
+  line-height: 1.75 !important;
+}
+.link {
+  color: #5569ff !important;
 }
