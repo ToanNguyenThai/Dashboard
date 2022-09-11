@@ -303,7 +303,6 @@ export default function Login() {
             >
               Don’t have an account, yet?
               <a className={style.link} href="#" style={{ fontSize: "15px" }}>
-                {" "}
                 Sign up here
               </a>
             </Typography>
