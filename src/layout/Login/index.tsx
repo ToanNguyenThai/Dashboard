@@ -268,14 +268,6 @@ export default function Login() {
                         </Typography>
                       }
                     />
-                    {errors.terms !== undefined && (
-                      <span
-                        style={{ marginLeft: "14px" }}
-                        className={style.invalid}
-                      >
-                        You must agree to our terms and conditions
-                      </span>
-                    )}
                   </FormGroup>
                 )}
               />
@@ -288,7 +280,11 @@ export default function Login() {
                 Lost Password?
               </a>
             </Box>
-
+            {errors.terms !== undefined && (
+              <span style={{ marginLeft: "14px" }} className={style.invalid}>
+                You must agree to our terms and conditions
+              </span>
+            )}
             <Button
               onClick={handleSubmit(onSubmit)}
               className={style.mybutton}
