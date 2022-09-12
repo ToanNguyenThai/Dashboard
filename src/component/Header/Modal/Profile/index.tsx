@@ -1,17 +1,73 @@
+import { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import avatar from "../../../../assets/img/avatar.jpg";
 import { loginSelectors } from "../../../../redux/slice/login";
 import { MdKeyboardArrowRight, MdLock } from "react-icons/md";
-
+import { BsCoin } from "react-icons/bs";
+import ReactApexChart from "react-apexcharts";
+import { ApexOptions } from "apexcharts";
 import style from "./profile.module.css";
 
 interface profileProps {
   signOut: any;
 }
+const options: ApexOptions = {
+  chart: {
+    type: "line",
+
+    toolbar: {
+      show: false,
+    },
+  },
+  colors: ["#ff3b5f"],
+  dataLabels: {
+    enabled: false,
+  },
+  stroke: {
+    curve: "smooth",
+  },
+
+  grid: {
+    show: false,
+  },
+  xaxis: {
+    labels: {
+      show: false,
+    },
+    axisBorder: {
+      show: false,
+    },
+    axisTicks: {
+      show: false,
+    },
+    tooltip: {
+      enabled: false,
+    },
+  },
+  yaxis: {
+    show: false,
+  },
+  legend: {
+    show: false,
+  },
+  tooltip: {
+    x: {
+      show: false,
+    },
+  },
+};
 export default function Profile({ signOut }: profileProps) {
   const user = useSelector(loginSelectors.selectAccount);
-
+  const [state, setState] = useState({
+    series: [
+      {
+        name: "Orders",
+        data: [465, 564, 234, 576, 554, 338, 427, 348, 586, 254, 348],
+      },
+    ],
+    options: options,
+  });
   return (
     <Box className={style.modalProfile}>
       <Box className={style.modalHeader}>
@@ -76,6 +132,27 @@ export default function Profile({ signOut }: profileProps) {
             fontSize="17px"
           ></MdKeyboardArrowRight>
         </Box>
+      </Box>
+      <Box className={style.chart}>
+        <Box sx={{ display: "flex" }}>
+          <BsCoin
+            fontSize="35px"
+            color="ffa319"
+            style={{ marginLeft: "20px", transform: "translateY(3px)" }}
+          ></BsCoin>
+          <Box sx={{ marginLeft: "15px" }}>
+            <Typography variant="h5" fontWeight="700">
+              $14,264
+            </Typography>
+            <Typography variant="body1">total value</Typography>
+          </Box>
+        </Box>
+        <ReactApexChart
+          options={state.options}
+          series={state.series}
+          type="line"
+          height={120}
+        />
       </Box>
       <Box onClick={signOut} className={style.signOut}>
         <Box className={style.signOutBtn}>
