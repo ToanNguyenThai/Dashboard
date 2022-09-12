@@ -1,0 +1,113 @@
+.megaMenu {
+  position: absolute;
+  top: 17px;
+  left: 400px;
+  width: 764px;
+  border-radius: 10px;
+  outline: none !important;
+  transition: all linear 0.3s;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.mega_header {
+  width: 100%;
+  height: 84px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+  background-color: #eeeff2;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.link {
+  font-size: 15px;
+  color: #5569ff !important;
+  cursor: pointer;
+}
+.link:hover {
+  text-decoration: underline !important;
+}
+
+.mega_body {
+  display: flex;
+  border-bottom: 1px solid #eeeff2;
+}
+
+.megaList {
+  width: 100%;
+  padding: 15px 20px;
+}
+.megaItem {
+  margin-top: 3px;
+  cursor: pointer;
+  padding: 9px 30px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 20px;
+  transition: all linear 0.2s;
+}
+
+.megaItem_col1 .megaText {
+  color: rgba(34, 51, 84, 0.7);
+}
+.megaItem_col1:hover,
+.megaItem_col1_active {
+  background-color: #e8eaee;
+}
+.megaItem_col1:hover .megaText,
+.megaItem_col1_active .megaText {
+  color: #223354;
+}
+/* ----------- */
+.megaItem_col2 .megaText {
+  color: #5bcb27;
+}
+.megaItem_col2:hover,
+.megaItem_col2_active {
+  background-color: #eefae8;
+}
+.megaItem_col2:hover .megaText,
+.megaItem_col2_active .megaText {
+  color: #45a11b;
+}
+/* ------------ */
+
+.megaItem_col3 .megaText {
+  color: #ff1943;
+}
+.megaItem_col3:hover,
+.megaItem_col3_active {
+  background-color: #ffe8ec;
+}
+.megaItem_col3:hover .megaText,
+.megaItem_col3_active .megaText {
+  color: #cc1435;
+}
+
+.centerItem {
+  border-left: 1px solid #eeeff2;
+  border-right: 1px solid #eeeff2;
+}
+
+.mega_footer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mega_footer_btn {
+  font-family: var(--main-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: #5569ff;
+
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 8px 15px;
+  transition: all linear 0.2s;
+}
+.mega_footer_btn:hover {
+  background-color: #e3e5fa;
+  color: #5569ff;
+}

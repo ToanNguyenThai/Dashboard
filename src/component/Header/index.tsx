@@ -18,6 +18,7 @@ import { loginActions } from "../../redux/slice/login";
 import Dashboard from "./Modal/Dashboard";
 import Language from "./Modal/Language";
 import Profile from "./Modal/Profile";
+import MegaMenu from "./Modal/MegaMenu";
 
 import style from "./header.module.css";
 
@@ -39,6 +40,10 @@ export default function Header() {
   const [openLanguage, setOpenLanguage] = useState(false);
   const handleOpenLanguage = () => setOpenLanguage(true);
   const handleCloseLanguage = () => setOpenLanguage(false);
+
+  const [openMegaMenu, setOpenMegaMenu] = useState(false);
+  const handleOpenMegaMenu = () => setOpenMegaMenu(true);
+  const handleCloseMegaMenu = () => setOpenMegaMenu(false);
 
   const [flag, setFlag] = useState(uk);
 
@@ -93,7 +98,7 @@ export default function Header() {
             <MdSearch fontSize="25px" />
           </Box>
           <Box className={style.separate}></Box>
-          <Box onClick={handleOpenDashboard} className={style.headerOption}>
+          <Box onClick={handleOpenMegaMenu} className={style.headerOption}>
             Mega menu
             <MdKeyboardArrowDown
               style={{
@@ -197,6 +202,16 @@ export default function Header() {
           flag={flag}
           handleChangeLanguage={handleChangeLanguage}
         ></Language>
+      </Modal>
+
+      <Modal
+        open={openMegaMenu}
+        onClose={handleCloseMegaMenu}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className={style.modalBackdrop}
+      >
+        <MegaMenu></MegaMenu>
       </Modal>
     </>
   );
