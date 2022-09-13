@@ -1,3 +1,22 @@
+.sidebar {
+  width: 300px;
+  height: 100%;
+  background-color: #11192a;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 40px 30px;
+}
+
+.sidebar_body {
+  height: 97%;
+  overflow-y: auto;
+}
+
+.sidebar_body::-webkit-scrollbar {
+  display: none;
+}
+
 .sidebar_item,
 .active {
   display: flex;
@@ -8,17 +27,20 @@
   background-color: unset !important;
   height: 48px !important;
 }
+
 .active,
 .sidebar_item:hover {
   background-color: #1f2737 !important;
   border-radius: 10px !important;
 }
+
 .sidebar_item:hover .sidebar_icon,
 .sidebar_item.active .sidebar_icon,
 .sidebar_item:hover .sidebar_text,
 .sidebar_item.active .sidebar_text {
   color: rgb(233, 233, 233);
 }
+
 .sidebar_text,
 .field_title,
 .accordion_text {
@@ -27,9 +49,11 @@
   font-weight: 600;
   color: #b5b8bd;
 }
+
 .sidebar_text {
   transform: translate3d(-8px, 5px, 0);
 }
+
 .field_title {
   padding-left: 10px;
   padding-bottom: 10px;
@@ -58,6 +82,7 @@
   padding-left: 18px;
   transform: translateY(-1px);
 }
+
 .accordion_dot {
   width: 7px;
   height: 7px;
@@ -66,19 +91,22 @@
   transition: all linear 0.2s;
   transform: translateY(-1px);
 }
+
 .accordion_item:hover .accordion_dot,
 .active_accordion_item .accordion_dot {
   background-color: #fff;
 }
+
 .sidebar_icon {
   color: #b5b8bd;
   font-size: 23px;
   margin-right: 18px;
   transform: translateY(2px);
 }
+
 .sidebar_footer {
-  width: 100%;
   height: 60px;
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -86,7 +114,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999999;
 }
+
 .sidebar_footer_item {
   cursor: pointer;
   margin: 0 7px;
@@ -101,10 +131,12 @@
   justify-content: center;
   position: relative;
 }
+
 .sidebar_footer_item:hover {
   background-color: rgba(248, 238, 238, 0.24);
   color: white;
 }
+
 .greendot {
   width: 10px;
   height: 10px;
@@ -115,17 +147,21 @@
   background-color: rgb(1, 211, 1);
   animation: zoom 0.5s ease-out infinite;
 }
+
 @keyframes zoom {
   0% {
     transform: scale(0.8, 0.8);
   }
+
   50% {
     transform: scale(1, 1);
   }
+
   100% {
     transform: scale(0.8, 0.8);
   }
 }
+
 .customAccordion {
   background-color: unset !important;
   box-shadow: unset !important;
