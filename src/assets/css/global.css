@@ -38,3 +38,6 @@ a,
 span {
   font-family: var(--main-font) !important;
 }
+.apexcharts-svg.apexcharts-zoomable.hovering-zoom {
+  cursor: unset !important;
+}

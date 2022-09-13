@@ -56,3 +56,7 @@
 .signOutBtn:hover {
   background-color: #e3e5fa;
 }
+.chart {
+  padding: 20px 8px;
+  border-top: 1px solid #e8eaee;
+}
