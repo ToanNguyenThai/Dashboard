@@ -130,52 +130,6 @@ export default function Sidebar() {
           icon: <BsShieldFillPlus></BsShieldFillPlus>,
           children: [
             {
-              display: t("SIDEBAR.REPORTS"),
-              to: `/report`,
-            },
-            {
-              display: "Expenses",
-              to: `/Expenses`,
-            },
-            {
-              display: t("SIDEBAR.PRODUCTS"),
-              to: `/product`,
-            },
-            {
-              display: "Statistics",
-              to: `/Statistics`,
-            },
-            {
-              display: "Automation",
-              to: `/Automation`,
-            },
-            {
-              display: "Analytics",
-              to: `/Analytics`,
-            },
-            {
-              display: "Banking",
-              to: `/Banking`,
-            },
-            {
-              display: t("SIDEBAR.CRYPTO"),
-              to: `/crypto`,
-            },
-            {
-              display: "Finance",
-              to: `/Finance`,
-            },
-            {
-              display: "Fitness",
-              to: `/Fitness`,
-            },
-          ],
-        },
-        {
-          display: t("SIDEBAR.APPLICATION"),
-          icon: <MdInsertChartOutlined></MdInsertChartOutlined>,
-          children: [
-            {
               display: "Charts large",
               to: `/calendar`,
             },
@@ -231,6 +185,38 @@ export default function Sidebar() {
             },
             {
               display: "Statistics",
+              to: `/project`,
+            },
+          ],
+        },
+        {
+          display: t("SIDEBAR.APPLICATION"),
+          icon: <MdInsertChartOutlined></MdInsertChartOutlined>,
+          children: [
+            {
+              display: "Calendar",
+              to: `/calendar`,
+            },
+            {
+              display: "File Manager",
+              to: `/file`,
+            },
+            {
+              display: "Job Platform",
+              to: `/job`,
+            },
+            {
+              display: "Mailbox",
+              to: `/mail`,
+            },
+
+            {
+              display: "Messenger",
+              to: `/messenger`,
+            },
+
+            {
+              display: "Projects Board",
               to: `/project`,
             },
           ],
