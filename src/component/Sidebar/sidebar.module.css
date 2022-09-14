@@ -102,6 +102,11 @@
   border-radius: 10px !important;
 }
 
+.active_accordion_item .accordion_text,
+.accordion_item:hover .accordion_text {
+  color: white;
+}
+
 .accordion_text {
   padding-left: 18px;
   transform: translateY(-1px);
