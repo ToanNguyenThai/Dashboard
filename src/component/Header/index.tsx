@@ -77,12 +77,12 @@ export default function Header() {
     <>
       <Box
         sx={{
-          width: "calc(100% - 300px);",
-          height: "80px",
+          width: "calc(100% - 320px);",
+          height: "85px",
           backgroundColor: "white",
           position: "fixed",
           top: 0,
-          marginLeft: "300px",
+          marginLeft: "320px",
           boxShadow:
             "rgb(34 51 84 / 20%) 0px 2px 8px -3px, rgb(34 51 84 / 10%) 0px 5px 22px -4px",
           display: "flex",

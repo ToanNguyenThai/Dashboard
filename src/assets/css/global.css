@@ -1,32 +1,44 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
 }
+
 a {
   text-decoration: none !important;
   color: inherit !important;
 }
+
 .MuiBackdrop-root {
   background-color: unset !important;
 }
+
 .tooltip {
   width: 100px !important;
 }
+
 .Mui-expanded {
   margin: 10px 0 !important;
   min-height: 0 !important;
 }
+
 .MuiAccordionDetails-root {
   padding: 0 !important;
 }
 
+.MuiAccordion-root:before {
+  height: 0px !important;
+}
+
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
 :root {
   --main-font: "Inter", sans-serif;
 }
+
 h1,
 h2,
 h3,
@@ -38,6 +50,7 @@ a,
 span {
   font-family: var(--main-font) !important;
 }
+
 .apexcharts-svg.apexcharts-zoomable.hovering-zoom {
   cursor: unset !important;
 }

@@ -9,7 +9,7 @@ export default function index() {
       <Sidebar></Sidebar>
 
       <Header></Header>
-      <div style={{ marginTop: "80px", marginLeft: "300px" }}>
+      <div style={{ marginTop: "80px", marginLeft: "320px" }}>
         <Outlet></Outlet>
       </div>
     </>

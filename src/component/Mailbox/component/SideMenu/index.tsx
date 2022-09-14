@@ -121,7 +121,7 @@ export default function SideMenu() {
         height: "calc(100vh - 80px)",
         padding: "25px",
         position: "fixed",
-        left: "300px",
+        left: "320px",
         top: "80px",
       }}
     >

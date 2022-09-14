@@ -27,6 +27,8 @@ import { TiFlowChildren } from "react-icons/ti";
 import { TbAlertCircle } from "react-icons/tb";
 import { GiPencilRuler } from "react-icons/gi";
 import { IoMdNuclear } from "react-icons/io";
+
+import singlelogo from "../../assets/img/singlelogo.png";
 import avatar from "../../assets/img/avatar.jpg";
 import style from "./sidebar.module.css";
 
@@ -369,20 +371,37 @@ export default function Sidebar() {
   return (
     <Box className={style.sidebar}>
       <Box className={style.sidebar_body}>
+        <CustomWidthTooltipWhite
+          title="Tokyo React Typescript Admin Dashboard"
+          arrow
+          placement="top"
+        >
+          <img className={style.brand} src={singlelogo}></img>
+        </CustomWidthTooltipWhite>
+        <Box
+          sx={{
+            width: "100%",
+            height: "1px",
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+            marginTop: "20px",
+          }}
+        ></Box>
         <Box
           sx={{
             width: "100%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            marginTop: "30px",
           }}
         >
-          <img style={{ borderRadius: "100%" }} src={avatar}></img>
+          <img className={style.avatar} src={avatar}></img>
           <Typography
-            fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
             variant="body1"
             color="white"
             marginTop="10px"
+            fontSize="17px"
+            fontWeight="700"
           >
             {user.email}
           </Typography>
@@ -445,6 +464,7 @@ export default function Sidebar() {
                     <Box className={style.sidebar_icon}>{item.icon}</Box>
                     <Box className={style.sidebar_text}>{item.display}</Box>
                   </AccordionSummary>
+
                   <AccordionDetails>
                     {item?.children?.map((child) => (
                       <Box
