@@ -200,7 +200,7 @@ export default function Header() {
         onClose={handleCloseDashboard}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        className={style.modalBackdrop}
+        className="modalBackdrop"
       >
         <Dashboard></Dashboard>
       </Modal>
@@ -209,7 +209,7 @@ export default function Header() {
         onClose={handleCloseProfile}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        className={style.modalBackdrop}
+        className="modalBackdrop"
       >
         <Profile signOut={signOut}></Profile>
       </Modal>
@@ -219,7 +219,7 @@ export default function Header() {
         onClose={handleCloseLanguage}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        className={style.modalBackdrop}
+        className="modalBackdrop"
       >
         <Language
           languageItem={languageItem}
@@ -233,7 +233,7 @@ export default function Header() {
         onClose={handleCloseMegaMenu}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        className={style.modalBackdrop}
+        className="modalBackdrop"
       >
         <MegaMenu></MegaMenu>
       </Modal>

@@ -32,6 +32,10 @@ a {
   height: 0px !important;
 }
 
+.modalBackdrop {
+  backdrop-filter: blur(2px) !important;
+}
+
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 

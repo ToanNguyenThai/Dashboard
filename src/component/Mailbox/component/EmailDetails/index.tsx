@@ -143,7 +143,7 @@ export default function EmailDetails() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        className={style.modalBackdrop}
+        className="modalBackdrop"
       >
         <Box className={style.modalContent}>
           <Typography className={style.contentItem} variant="body1">

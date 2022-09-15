@@ -198,3 +198,21 @@
   border: none !important;
   padding: 0 10px;
 }
+.pointerBox {
+  cursor: pointer;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  right: 0;
+  top: 0;
+  transition: all linear 0.1s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pointerBox:hover {
+  background-color: rgba(255, 255, 255, 0.212);
+}

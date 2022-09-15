@@ -7,6 +7,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Accordion,
+  Modal,
 } from "@mui/material";
 import { CustomWidthTooltipWhite } from "../CustomWidthTooltipWhite";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,6 +18,7 @@ import {
   MdOutlineMessage,
   MdOutlinePowerSettingsNew,
   MdKeyboardArrowDown,
+  MdKeyboardArrowUp,
   MdInsertChartOutlined,
   MdStorefront,
 } from "react-icons/md";
@@ -27,6 +29,8 @@ import { TiFlowChildren } from "react-icons/ti";
 import { TbAlertCircle } from "react-icons/tb";
 import { GiPencilRuler } from "react-icons/gi";
 import { IoMdNuclear } from "react-icons/io";
+
+import Profile from "./Modal/Profile";
 
 import singlelogo from "../../assets/img/singlelogo.png";
 import avatar from "../../assets/img/avatar.jpg";
@@ -42,6 +46,10 @@ export default function Sidebar() {
 
   const [activeIndex, setActiveIndex] = useState([""]);
   const [activeItem, setActiveItem] = useState("");
+
+  const [openProfile, setOpenProfile] = useState(false);
+  const handleOpenProfile = () => setOpenProfile(true);
+  const handleCloseProfile = () => setOpenProfile(false);
 
   const sidebarNavItems = [
     {
@@ -367,7 +375,9 @@ export default function Sidebar() {
     if (url === "/mail") navigate(url);
     else navigate("/");
   };
-
+  const signOut = () => {
+    dispatch(loginActions.logout());
+  };
   return (
     <Box className={style.sidebar}>
       <Box className={style.sidebar_body}>
@@ -393,6 +403,7 @@ export default function Sidebar() {
             flexDirection: "column",
             alignItems: "center",
             marginTop: "30px",
+            position: "relative",
           }}
         >
           <img className={style.avatar} src={avatar}></img>
@@ -405,7 +416,6 @@ export default function Sidebar() {
           >
             {user.email}
           </Typography>
-
           <Typography
             fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
             variant="body1"
@@ -413,6 +423,27 @@ export default function Sidebar() {
           >
             Technical Manager
           </Typography>
+
+          <Box onClick={handleOpenProfile} className={style.pointerBox}>
+            <MdKeyboardArrowUp
+              color="#e5e6e8"
+              style={{ transform: "translateY(2px)" }}
+            ></MdKeyboardArrowUp>
+            <MdKeyboardArrowDown
+              color="#e5e6e8"
+              style={{ transform: "translateY(-2px)" }}
+            ></MdKeyboardArrowDown>
+          </Box>
+
+          <Modal
+            open={openProfile}
+            onClose={handleCloseProfile}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+            className="modalBackdrop"
+          >
+            <Profile signOut={signOut}></Profile>
+          </Modal>
         </Box>
 
         <Box
