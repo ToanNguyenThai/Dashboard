@@ -23,6 +23,7 @@ export default function Language({
         fontSize="14px"
         fontWeight="600"
         color="#6e759f"
+        paddingBottom="10px"
       >
         {t("LANG.TITLE")}
       </Typography>
@@ -35,15 +36,16 @@ export default function Language({
         >
           <img
             style={{
-              width: "30px",
+              width: "26px",
+              height: "17px",
             }}
             src={item.flag}
           ></img>
           <Typography
             variant="body1"
-            fontSize="14px"
+            fontSize="13px"
             color={flag === item.flag ? "#223354" : "#6e759f"}
-            marginLeft="20px"
+            marginLeft="17px"
           >
             {item.name}
           </Typography>

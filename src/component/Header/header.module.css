@@ -28,19 +28,18 @@
 .headerOption {
   cursor: pointer;
   margin-right: 10px;
-  padding: 10px;
-  padding-left: 15px;
+  padding: 7px 18px;
+  padding-bottom: 8px;
   background-color: #eff1f5;
   color: #585d7f;
   border-radius: 10px;
   font-family: var(--main-font);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 13px;
   transition: all linear 0.2s;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 140px;
+  justify-content: space-between;
 }
 
 .headerOption:hover {

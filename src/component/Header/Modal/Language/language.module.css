@@ -1,8 +1,8 @@
 .modalLanguage {
   position: absolute;
-  top: 17px;
-  right: 170px;
-  width: 220px;
+  top: 27px;
+  right: 120px;
+  width: 240px;
   border-radius: 10px;
   outline: none !important;
   transition: all linear 0.3s;
@@ -12,10 +12,11 @@
 }
 .languageItem,
 .selectedLanguage {
-  margin-top: 15px;
+  margin-top: 5px;
   cursor: pointer;
   display: flex;
-  border-radius: 10px;
+  align-items: center;
+  border-radius: 7px;
   transition: all linear 0.2s;
   padding: 10px 20px;
 }

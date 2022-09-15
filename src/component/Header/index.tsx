@@ -7,6 +7,9 @@ import { useTranslation } from "react-i18next";
 import avatar from "../../assets/img/avatar.jpg";
 import uk from "../../assets/img/uk.webp";
 import vn from "../../assets/img/vn.webp";
+import germany from "../../assets/img/germany.png";
+import spain from "../../assets/img/spain.png";
+import france from "../../assets/img/france.png";
 
 import { MdSearch, MdKeyboardArrowDown } from "react-icons/md";
 import { HiBell } from "react-icons/hi";
@@ -62,6 +65,27 @@ export default function Header() {
       type: "vn",
       flag: vn,
     },
+
+    {
+      id: 3,
+      name: t("LANG.GERMANY"),
+      type: "en",
+      flag: germany,
+    },
+
+    {
+      id: 4,
+      name: t("LANG.SPAIN"),
+      type: "en",
+      flag: spain,
+    },
+
+    {
+      id: 5,
+      name: t("LANG.FRANCE"),
+      type: "en",
+      flag: france,
+    },
   ];
 
   const signOut = () => {
@@ -102,7 +126,7 @@ export default function Header() {
             Mega menu
             <MdKeyboardArrowDown
               style={{
-                transform: "translateY(1px)",
+                transform: "translate3d(8px,1px, 0 )",
               }}
               fontSize="17px"
             ></MdKeyboardArrowDown>
@@ -111,7 +135,7 @@ export default function Header() {
             Dashboards
             <MdKeyboardArrowDown
               style={{
-                transform: "translateY(1px)",
+                transform: "translate3d(8px,1px, 0 )",
               }}
               fontSize="17px"
             ></MdKeyboardArrowDown>

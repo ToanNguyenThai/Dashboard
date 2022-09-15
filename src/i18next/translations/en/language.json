@@ -1,5 +1,8 @@
 {
-    "LANG.TITLE": "Language Switcher",
-    "LANG.EN": "English",
-    "LANG.VN": "Vietnamese"
+  "LANG.TITLE": "Language Switcher",
+  "LANG.EN": "English",
+  "LANG.VN": "Vietnamese",
+  "LANG.GERMANY": "German",
+  "LANG.FRANCE": "French",
+  "LANG.SPAIN": "Spainish"
 }
