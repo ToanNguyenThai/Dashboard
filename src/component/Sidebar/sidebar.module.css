@@ -1,5 +1,5 @@
 .sidebar {
-  width: 320px;
+  width: 307px;
   height: 100%;
   background-color: #11192a;
   position: fixed;
@@ -14,14 +14,13 @@
 }
 
 .brand {
-  transform: scale(0.9);
+  transform: scale(0.8);
   cursor: pointer;
 }
 
 .avatar {
   border-radius: 100%;
   transform: scale(0.95);
-
 }
 
 .sidebar_body::-webkit-scrollbar {
@@ -40,7 +39,7 @@
 }
 
 .sidebar_expandIcon {
-  font-size: 22px;
+  font-size: 20px;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -65,7 +64,7 @@
 .sidebar_text,
 .field_title,
 .accordion_text {
-  font-size: 16px;
+  font-size: 14px;
   font-family: var(--main-font);
   font-weight: 700;
   color: #b5b8bd;
@@ -73,7 +72,7 @@
 }
 
 .sidebar_text {
-  transform: translate3d(-5px, 3px, 0);
+  transform: translate3d(-5px, 2px, 0);
 }
 
 .field_title {
@@ -128,7 +127,7 @@
 
 .sidebar_icon {
   color: #b5b8bd;
-  font-size: 20px;
+  font-size: 18px;
   margin-right: 18px;
   transform: translateY(2px);
 }

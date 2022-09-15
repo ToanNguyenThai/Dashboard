@@ -35,12 +35,14 @@ const options: ApexOptions = {
     labels: {
       show: false,
     },
+    /* remove bottom ruler */
     axisBorder: {
       show: false,
     },
     axisTicks: {
       show: false,
     },
+    /* remove small tooltip */
     tooltip: {
       enabled: false,
     },
@@ -52,6 +54,7 @@ const options: ApexOptions = {
     show: false,
   },
   tooltip: {
+    /* remove header of tooltip */
     x: {
       show: false,
     },

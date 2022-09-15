@@ -40,7 +40,7 @@ export default function Sidebar() {
 
   const user: User = useSelector(loginSelectors.selectAccount);
 
-  const [activeIndex, setActiveIndex] = useState("");
+  const [activeIndex, setActiveIndex] = useState([""]);
   const [activeItem, setActiveItem] = useState("");
 
   const sidebarNavItems = [
@@ -441,8 +441,14 @@ export default function Sidebar() {
                   key={index}
                   className={`${style.customAccordion}`}
                   onChange={(e, expanded) => {
-                    if (expanded) setActiveIndex(item.display);
-                    else setActiveIndex("");
+                    if (expanded)
+                      setActiveIndex((oldArray) => [...oldArray, item.display]);
+                    else
+                      setActiveIndex(
+                        activeIndex.filter(
+                          (activeItem) => activeItem !== item.display
+                        )
+                      );
                   }}
                 >
                   <AccordionSummary
@@ -458,7 +464,7 @@ export default function Sidebar() {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                     className={`${style.sidebar_item} ${
-                      activeIndex === item.display && style.active
+                      activeIndex.includes(item.display) && style.active
                     } `}
                   >
                     <Box className={style.sidebar_icon}>{item.icon}</Box>
