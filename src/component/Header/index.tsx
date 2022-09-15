@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { Box, Modal } from "@mui/material";
-import { CustomWidthTooltip } from "../CustomWidthTooltip";
-
 import { useTranslation } from "react-i18next";
 
 import avatar from "../../assets/img/avatar.jpg";
@@ -11,6 +8,7 @@ import germany from "../../assets/img/germany.png";
 import spain from "../../assets/img/spain.png";
 import france from "../../assets/img/france.png";
 
+import { Box, Modal } from "@mui/material";
 import { MdSearch, MdKeyboardArrowDown } from "react-icons/md";
 import { HiBell } from "react-icons/hi";
 import { BiConversation } from "react-icons/bi";
@@ -18,10 +16,12 @@ import { BiConversation } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../../redux/slice/login";
 
+import { CustomWidthTooltip } from "../CustomWidthTooltip";
 import Dashboard from "./Modal/Dashboard";
 import Language from "./Modal/Language";
 import Profile from "./Modal/Profile";
 import MegaMenu from "./Modal/MegaMenu";
+import Messenger from "./Modal/Messenger";
 
 import style from "./header.module.css";
 
@@ -47,6 +47,10 @@ export default function Header() {
   const [openMegaMenu, setOpenMegaMenu] = useState(false);
   const handleOpenMegaMenu = () => setOpenMegaMenu(true);
   const handleCloseMegaMenu = () => setOpenMegaMenu(false);
+
+  const [openMessenger, setOpenMessenger] = useState(false);
+  const handleOpenMessenger = () => setOpenMessenger(true);
+  const handleCloseMessenger = () => setOpenMessenger(false);
 
   const [flag, setFlag] = useState(uk);
 
@@ -178,6 +182,7 @@ export default function Header() {
 
           <CustomWidthTooltip title="Messengers" arrow placement="bottom">
             <Box
+              onClick={handleOpenMessenger}
               sx={{
                 backgroundColor: "#fef6e8",
               }}
@@ -236,6 +241,16 @@ export default function Header() {
         className="modalBackdrop"
       >
         <MegaMenu></MegaMenu>
+      </Modal>
+
+      <Modal
+        open={openMessenger}
+        onClose={handleCloseMessenger}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="modalBackdrop"
+      >
+        <Messenger></Messenger>
       </Modal>
     </>
   );

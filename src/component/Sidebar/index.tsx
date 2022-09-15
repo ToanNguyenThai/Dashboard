@@ -421,7 +421,7 @@ export default function Sidebar() {
             variant="body1"
             color="rgba(255, 255, 255, 0.7)"
           >
-            Technical Manager
+            Lead Developer
           </Typography>
 
           <Box onClick={handleOpenProfile} className={style.pointerBox}>

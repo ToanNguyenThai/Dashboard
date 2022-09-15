@@ -90,7 +90,7 @@ export default function Profile({ signOut }: profileProps) {
             fontSize="15px"
             color="#9297B7"
           >
-            Technical Manager
+            Lead Developer
           </Typography>
         </Box>
       </Box>
