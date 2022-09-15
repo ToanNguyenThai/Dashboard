@@ -34,7 +34,7 @@
   transition: all linear 0.2s;
 }
 .navText {
-  font-size: 14px;
+  font-size: 14px !important;
   color: rgb(110, 117, 159);
   padding-left: 8px;
   transform: translateY(-1px);
