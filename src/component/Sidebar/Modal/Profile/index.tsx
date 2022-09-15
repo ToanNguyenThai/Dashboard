@@ -27,7 +27,8 @@ export default function Profile({ signOut }: profileProps) {
             fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
             variant="body1"
             fontSize="14px"
-            color="black"
+            fontWeight="700"
+            color="rgb(110, 117, 159);"
           >
             {user.email}
           </Typography>
