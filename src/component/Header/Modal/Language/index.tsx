@@ -43,7 +43,7 @@ export default function Language({
           ></img>
           <Typography
             variant="body1"
-            fontSize="13px"
+            fontSize="14px"
             color={flag === item.flag ? "#223354" : "#6e759f"}
             marginLeft="17px"
           >

@@ -505,7 +505,7 @@ export default function Sidebar() {
                   <AccordionDetails>
                     {item?.children?.map((child) => (
                       <Box
-                        sx={{ paddingLeft: "23px" }}
+                        sx={{ paddingLeft: "30px" }}
                         className={`${style.accordion_item} ${
                           activeItem === child.display &&
                           style.active_accordion_item

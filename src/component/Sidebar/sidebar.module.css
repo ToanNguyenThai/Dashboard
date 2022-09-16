@@ -93,7 +93,7 @@
   transition: all linear 0.2s;
   background-color: unset !important;
   height: 40px !important;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 .active_accordion_item,
@@ -194,9 +194,9 @@
 .customAccordion {
   background-color: unset !important;
   box-shadow: unset !important;
-  margin-top: 10px;
+  margin-top: 2px;
   border: none !important;
-  padding: 0 10px;
+  padding: 0;
 }
 .pointerBox {
   cursor: pointer;
