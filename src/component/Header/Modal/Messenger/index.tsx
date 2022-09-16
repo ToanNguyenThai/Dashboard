@@ -1,6 +1,6 @@
 import { Box, Typography, TextField, InputAdornment } from "@mui/material";
 import { MdMarkChatRead, MdSearch } from "react-icons/md";
-
+import { AiOutlineArrowRight } from "react-icons/ai";
 import avatar from "../../../../assets/img/avatar.jpg";
 import style from "./messenger.module.css";
 
@@ -65,12 +65,47 @@ export default function Messenger() {
 
       <Box className={style.chatList}>
         {chatList.map((item) => (
-          <Box className={style.chatItem}></Box>
+          <Box className={style.chatItem}>
+            <Box className={style.userStatus}>
+              <img src={item.img}></img>
+              <Box
+                sx={{
+                  transform: "translateX(-10px)",
+                }}
+              >
+                <Typography
+                  fontSize="14px"
+                  fontWeight="700"
+                  color="rgb(34, 51, 84)"
+                >
+                  {item.name}
+                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Box className={style.greendot}></Box>
+                  <Typography
+                    fontSize="11px"
+                    color="rgb(87, 202, 34)"
+                    marginLeft="5px"
+                  >
+                    Online
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+            <Box className={style.button}>Chat</Box>
+          </Box>
         ))}
       </Box>
 
       <Box className={style.messenger_footer}>
-        <Box className={style.messenger_footer_btn}>View all participants</Box>
+        <Box className={style.messenger_footer_btn}>
+          View all participants{" "}
+          <AiOutlineArrowRight
+            fontSize="17px"
+            color="white"
+            style={{ transform: "translate3d(10px, 1px, 0)" }}
+          ></AiOutlineArrowRight>
+        </Box>
       </Box>
     </Box>
   );
