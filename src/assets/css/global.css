@@ -38,6 +38,38 @@ a {
   backdrop-filter: blur(2px) !important;
 }
 
+.Mui-selected {
+  color: white !important;
+}
+.MuiTimelineDot-root {
+  margin: 0 !important;
+}
+
+.MuiTimelineDot-filledSuccess {
+  background-color: rgb(87, 202, 34) !important;
+}
+
+.MuiTimelineDot-outlinedError {
+  border-color: red !important;
+}
+
+.MuiTimelineDot-filledPrimary {
+  background-color: #5569ff !important;
+}
+.MuiAvatar-root {
+  width: 32px !important;
+  height: 32px !important;
+}
+.MuiAvatar-colorDefault {
+  background-color: white !important;
+  color: #223354b3 !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  font-family: var(--main-font) !important;
+}
+.MuiTimelineConnector-root {
+  background-color: #f0f1f5 !important;
+}
 /* font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 

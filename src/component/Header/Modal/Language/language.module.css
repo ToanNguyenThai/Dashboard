@@ -18,7 +18,7 @@
   align-items: center;
   border-radius: 7px;
   transition: all linear 0.2s;
-  padding: 10px 20px;
+  padding: 8px 20px;
 }
 .languageItem:hover,
 .selectedLanguage {

@@ -22,6 +22,7 @@ import Language from "./Modal/Language";
 import Profile from "./Modal/Profile";
 import MegaMenu from "./Modal/MegaMenu";
 import Messenger from "./Modal/Messenger";
+import Notification from "./Modal/Notification";
 
 import style from "./header.module.css";
 
@@ -51,6 +52,10 @@ export default function Header() {
   const [openMessenger, setOpenMessenger] = useState(false);
   const handleOpenMessenger = () => setOpenMessenger(true);
   const handleCloseMessenger = () => setOpenMessenger(false);
+
+  const [openNotification, setOpenNotification] = useState(false);
+  const handleOpenNotification = () => setOpenNotification(true);
+  const handleCloseNotification = () => setOpenNotification(false);
 
   const [flag, setFlag] = useState(uk);
 
@@ -148,6 +153,7 @@ export default function Header() {
         <Box className={style.rightContainer}>
           <CustomWidthTooltip title="Notifications" arrow placement="bottom">
             <Box
+              onClick={handleOpenNotification}
               sx={{
                 backgroundColor: "#edf0ff",
               }}
@@ -251,6 +257,16 @@ export default function Header() {
         className="modalBackdrop"
       >
         <Messenger></Messenger>
+      </Modal>
+
+      <Modal
+        open={openNotification}
+        onClose={handleCloseNotification}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="modalBackdrop"
+      >
+        <Notification></Notification>
       </Modal>
     </>
   );

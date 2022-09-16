@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Task() {
-  return <div>index</div>;
+  return <div>Task</div>;
 }
