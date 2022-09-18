@@ -9,11 +9,13 @@
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 .notiHeader {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 18px;
 }
+
 .headerBG {
   position: relative;
   width: 404px;
@@ -24,6 +26,7 @@
   background-size: cover;
   opacity: 0.9;
 }
+
 .greenOverlay {
   border-radius: 10px;
   width: 100%;
@@ -33,6 +36,7 @@
   background: linear-gradient(rgb(0, 176, 155), rgb(150, 201, 61));
   opacity: 0.6;
 }
+
 .text {
   border-radius: 10px;
   width: 100%;
@@ -45,10 +49,12 @@
   justify-content: center;
   align-items: center;
 }
+
 .headerNav {
   width: 100%;
   margin-top: 10px;
 }
+
 .navItem {
   height: 38px;
   width: 33.33%;
@@ -66,6 +72,7 @@
   z-index: 99999;
   transform: translateY(4px);
 }
+
 .navItemContainer {
   padding-left: 12px;
   border-top: 1px solid #eff1f5;
@@ -73,6 +80,7 @@
   height: 237px;
   overflow-y: auto;
 }
+
 .navItemContainer::-webkit-scrollbar {
   display: none;
 }
@@ -83,6 +91,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .noti_footer_btn {
   display: flex;
   align-items: center;
@@ -95,16 +104,17 @@
   border: 2px solid #5569ff;
   border-radius: 20px;
   padding: 6px 18px;
-  padding-bottom: 10px;
   padding-right: 21px;
   transition: all linear 0.2s;
 }
+
 .noti_footer_btn:hover {
   background-color: #5569ff;
   color: white;
   padding-left: 25px;
   padding-right: 28px;
 }
+
 .noti_footer_btn:hover svg {
   color: white !important;
 }
