@@ -9,7 +9,7 @@
 }
 
 .sidebar_body {
-  height: 94%;
+  height: 93%;
   overflow-y: auto;
 }
 
@@ -198,6 +198,7 @@
   border: none !important;
   padding: 0;
 }
+
 .pointerBox {
   cursor: pointer;
   position: absolute;
@@ -213,6 +214,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .pointerBox:hover {
   background-color: rgba(255, 255, 255, 0.212);
 }

@@ -6,7 +6,7 @@
 .task_card {
     margin-top: 9px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 10px;
+    border-radius: 10px !important;
     width: 100%;
     box-shadow: rgb(159 162 191 / 18%) 0px 9px 16px, rgb(159 162 191 / 32%) 0px 2px 2px;
     position: relative;
