@@ -163,7 +163,6 @@ export default function EmailItem({
           fontSize="14px"
           color="#223354B3"
           textAlign="right"
-          fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
         >
           {email.day.split(" ").slice(0, 2).join(" ")}
         </Typography>
