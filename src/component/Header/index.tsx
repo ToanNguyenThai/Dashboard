@@ -179,10 +179,7 @@ export default function Header() {
               className={style.rightContainer_icon}
               onClick={handleOpenLanguage}
             >
-              <img
-                style={{ width: "100%", transform: "translateY(-2px)" }}
-                src={flag}
-              ></img>
+              <img style={{ width: "65%" }} src={flag}></img>
             </Box>
           </CustomWidthTooltip>
 

@@ -27,6 +27,7 @@ export default function Task() {
             </Box>
           </Box>
         </CardContent>
+        <Box className={style.left_line}></Box>
       </Card>
 
       <Typography

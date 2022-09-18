@@ -52,7 +52,7 @@
 }
 
 .avatar {
-  transform: scale(0.43);
+  transform: scale(0.45);
   border-radius: 30px;
   cursor: pointer;
 }
@@ -63,11 +63,16 @@
 }
 
 .rightContainer_icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   margin-left: 13px;
-  padding: 8px;
+  /*   padding: 8px;
   padding-top: 6px;
-  padding-bottom: 1px;
+  padding-bottom: 1px; */
   border-radius: 10px;
   cursor: pointer;
 }

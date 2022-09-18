@@ -34,6 +34,21 @@ const options: ApexOptions = {
     axisTicks: {
       show: false,
     },
+
+    categories: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+      "Last week",
+      "Last month",
+      "Last year",
+      "Last quater",
+    ],
+
     /* remove small tooltip */
   },
   yaxis: {
