@@ -1,5 +1,7 @@
-import style from "./modalDasboard.module.css";
+import { motion, AnimatePresence } from "framer-motion";
 import { Box, Typography } from "@mui/material";
+import style from "./modalDasboard.module.css";
+
 import {
   MdLiveHelp,
   MdOutlineDashboardCustomize,

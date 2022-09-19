@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import avatar from "../../assets/img/avatar.jpg";
@@ -8,7 +8,8 @@ import germany from "../../assets/img/germany.png";
 import spain from "../../assets/img/spain.png";
 import france from "../../assets/img/france.png";
 
-import { Box, Modal } from "@mui/material";
+import { Box, Modal, Dialog, Slide, Grow } from "@mui/material";
+import { TransitionProps } from "@mui/material/transitions";
 import { MdSearch, MdKeyboardArrowDown } from "react-icons/md";
 import { HiBell } from "react-icons/hi";
 import { BiConversation } from "react-icons/bi";
@@ -25,6 +26,16 @@ import Messenger from "./Modal/Messenger";
 import Notification from "./Modal/Notification";
 import Search from "./Modal/Search";
 
+import {
+  TransitionSlideDown,
+  notiTransition,
+  megaTransition,
+  profileTransition,
+  langTransition,
+  messTransition,
+  dashboardTransition,
+} from "../Transition";
+
 import style from "./header.module.css";
 
 export type languageType = {
@@ -33,6 +44,7 @@ export type languageType = {
   type: string;
   flag: string;
 };
+
 export default function Header() {
   const [openDashboard, setOpenDashboard] = useState(false);
   const handleOpenDashboard = () => setOpenDashboard(true);
@@ -111,6 +123,7 @@ export default function Header() {
     setFlag(lang.flag);
     handleCloseLanguage();
   };
+
   return (
     <>
       <Box
@@ -208,30 +221,27 @@ export default function Header() {
           />
         </Box>
       </Box>
-      <Modal
+      <Dialog
         open={openDashboard}
         onClose={handleCloseDashboard}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        TransitionComponent={dashboardTransition}
         className="modalBackdrop"
       >
         <Dashboard></Dashboard>
-      </Modal>
-      <Modal
+      </Dialog>
+      <Dialog
         open={openProfile}
         onClose={handleCloseProfile}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        TransitionComponent={profileTransition}
         className="modalBackdrop"
       >
         <Profile signOut={signOut}></Profile>
-      </Modal>
+      </Dialog>
 
-      <Modal
+      <Dialog
         open={openLanguage}
         onClose={handleCloseLanguage}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        TransitionComponent={langTransition}
         className="modalBackdrop"
       >
         <Language
@@ -239,47 +249,43 @@ export default function Header() {
           flag={flag}
           handleChangeLanguage={handleChangeLanguage}
         ></Language>
-      </Modal>
+      </Dialog>
 
-      <Modal
+      <Dialog
         open={openMegaMenu}
         onClose={handleCloseMegaMenu}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        TransitionComponent={megaTransition}
         className="modalBackdrop"
       >
         <MegaMenu></MegaMenu>
-      </Modal>
+      </Dialog>
 
-      <Modal
+      <Dialog
         open={openMessenger}
         onClose={handleCloseMessenger}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        TransitionComponent={messTransition}
         className="modalBackdrop"
       >
         <Messenger></Messenger>
-      </Modal>
+      </Dialog>
 
-      <Modal
+      <Dialog
         open={openNotification}
         onClose={handleCloseNotification}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        TransitionComponent={notiTransition}
         className="modalBackdrop"
       >
         <Notification></Notification>
-      </Modal>
+      </Dialog>
 
-      <Modal
+      <Dialog
         open={openSearch}
         onClose={handleCloseSearch}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
         className="modalBackdrop"
+        TransitionComponent={TransitionSlideDown}
       >
         <Search></Search>
-      </Modal>
+      </Dialog>
     </>
   );
 }

@@ -37,7 +37,10 @@ a {
 .modalBackdrop {
   backdrop-filter: blur(2px) !important;
 }
-
+.MuiDialog-paper {
+  border-radius: 10px !important;
+  position: unset !important;
+}
 .Mui-selected {
   color: white !important;
 }
