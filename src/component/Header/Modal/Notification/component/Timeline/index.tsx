@@ -10,6 +10,7 @@ import {
 import { MdOutlineBusinessCenter } from "react-icons/md";
 import { FaIdBadge } from "react-icons/fa";
 import { Typography, AvatarGroup, Avatar, Box } from "@mui/material";
+
 import avatar from "../../../../../../assets/img/avatar.jpg";
 import bicycles from "../../../../../../assets/img/bicycles.jpg";
 

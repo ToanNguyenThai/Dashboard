@@ -1,0 +1,82 @@
+.instruction {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  color: rgb(51, 194, 255);
+  background: rgba(51, 194, 255, 0.1);
+  border-radius: 10px;
+  font-size: 13px !important;
+  display: flex;
+  padding: 9px;
+  margin: 5px 0 !important;
+}
+
+.belowInstruction {
+  height: 400px;
+  overflow-y: auto;
+  padding-bottom: 50px;
+}
+.belowInstruction::-webkit-scrollbar {
+  display: none;
+}
+.trendItem {
+  background-color: transparent;
+  color: #223354;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border: 1px solid rgba(34, 51, 84, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  padding-bottom: 11px;
+  margin: 9px 0px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.recentIcon {
+  color: rgba(34, 51, 84, 0.5);
+}
+.trendItem:hover {
+  color: #5569ff;
+  background-color: #edf0ff;
+  border-color: rgb(172, 184, 247);
+}
+.trendItem:hover .recentIcon {
+  color: #5569ff;
+}
+.actionIcon,
+.saveIcon,
+.cancelIcon {
+  padding: 4px;
+  padding-bottom: 1px;
+  border-radius: 10px;
+  transition: all linear 0.2s;
+  background-color: transparent;
+}
+.saveIcon:hover {
+  background-color: #d7defd;
+}
+.cancelIcon:hover {
+  background-color: #f5d4da;
+}
+
+.popular {
+  width: 100%;
+  display: flex;
+}
+.popularItemTitle {
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+}
+.link {
+  cursor: pointer;
+  display: block;
+  color: #5569ff !important;
+  font-size: 13px;
+  height: 26px;
+  padding-left: 25px;
+}
+.link:hover {
+  text-decoration: underline !important;
+}

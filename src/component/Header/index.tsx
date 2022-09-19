@@ -23,6 +23,7 @@ import Profile from "./Modal/Profile";
 import MegaMenu from "./Modal/MegaMenu";
 import Messenger from "./Modal/Messenger";
 import Notification from "./Modal/Notification";
+import Search from "./Modal/Search";
 
 import style from "./header.module.css";
 
@@ -56,6 +57,10 @@ export default function Header() {
   const [openNotification, setOpenNotification] = useState(false);
   const handleOpenNotification = () => setOpenNotification(true);
   const handleCloseNotification = () => setOpenNotification(false);
+
+  const [openSearch, setOpenSearch] = useState(false);
+  const handleOpenSearch = () => setOpenSearch(true);
+  const handleCloseSearch = () => setOpenSearch(false);
 
   const [flag, setFlag] = useState(uk);
 
@@ -127,7 +132,7 @@ export default function Header() {
         }}
       >
         <Box className={style.leftContainer}>
-          <Box className={style.icon}>
+          <Box onClick={handleOpenSearch} className={style.icon}>
             <MdSearch fontSize="25px" />
           </Box>
           <Box className={style.separate}></Box>
@@ -264,6 +269,16 @@ export default function Header() {
         className="modalBackdrop"
       >
         <Notification></Notification>
+      </Modal>
+
+      <Modal
+        open={openSearch}
+        onClose={handleCloseSearch}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="modalBackdrop"
+      >
+        <Search></Search>
       </Modal>
     </>
   );
