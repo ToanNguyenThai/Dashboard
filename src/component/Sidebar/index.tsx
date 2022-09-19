@@ -46,7 +46,7 @@ export default function Sidebar() {
 
   const user: User = useSelector(loginSelectors.selectAccount);
 
-  const [activeIndex, setActiveIndex] = useState([""]);
+  const [activeIndex, setActiveIndex] = useState(["Blueprints"]);
   const [activeItem, setActiveItem] = useState("");
 
   const [openProfile, setOpenProfile] = useState(false);
@@ -474,6 +474,7 @@ export default function Sidebar() {
               {sideItem.field_child.map((item, index) => (
                 <Accordion
                   key={index}
+                  defaultExpanded={activeIndex.includes(item.display)}
                   className={`${style.customAccordion}`}
                   onChange={(e, expanded) => {
                     if (expanded)

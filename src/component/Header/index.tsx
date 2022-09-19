@@ -8,8 +8,7 @@ import germany from "../../assets/img/germany.png";
 import spain from "../../assets/img/spain.png";
 import france from "../../assets/img/france.png";
 
-import { Box, Modal, Dialog, Slide, Grow } from "@mui/material";
-import { TransitionProps } from "@mui/material/transitions";
+import { Box, Dialog } from "@mui/material";
 import { MdSearch, MdKeyboardArrowDown } from "react-icons/md";
 import { HiBell } from "react-icons/hi";
 import { BiConversation } from "react-icons/bi";
