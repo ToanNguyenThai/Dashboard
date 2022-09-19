@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-
-import { Box, Typography, TextField, InputAdornment } from "@mui/material";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Box, TextField, InputAdornment } from "@mui/material";
 import { MdSearch } from "react-icons/md";
 
 import WithoutValue from "./WithoutValue";

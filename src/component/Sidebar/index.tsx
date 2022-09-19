@@ -10,6 +10,8 @@ import {
   Modal,
 } from "@mui/material";
 import { CustomWidthTooltipWhite } from "../CustomWidthTooltipWhite";
+import { CustomWidthTooltip } from "../CustomWidthTooltip";
+
 import { useSelector, useDispatch } from "react-redux";
 import { loginSelectors, loginActions } from "../../redux/slice/login";
 import { User } from "../../model/User";
@@ -355,6 +357,8 @@ export default function Sidebar() {
     },
   ];
 
+  const signedItem = ["Accent header", "Expenses", "Data Display"];
+
   useEffect(() => {
     let address = "";
     sidebarNavItems.forEach((i) => {
@@ -483,6 +487,9 @@ export default function Sidebar() {
                   }}
                 >
                   <AccordionSummary
+                    sx={{
+                      alignItems: "center",
+                    }}
                     expandIcon={
                       item.children ? (
                         <MdKeyboardArrowDown
@@ -500,12 +507,27 @@ export default function Sidebar() {
                   >
                     <Box className={style.sidebar_icon}>{item.icon}</Box>
                     <Box className={style.sidebar_text}>{item.display}</Box>
+                    {signedItem.includes(item.display) && (
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          right: "35px",
+                          top: "19px",
+                        }}
+                        className={style.purpledot}
+                      ></Box>
+                    )}
                   </AccordionSummary>
 
                   <AccordionDetails>
                     {item?.children?.map((child) => (
                       <Box
-                        sx={{ paddingLeft: "30px" }}
+                        sx={{
+                          paddingLeft: "30px",
+
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
                         className={`${style.accordion_item} ${
                           activeItem === child.display &&
                           style.active_accordion_item
@@ -514,10 +536,30 @@ export default function Sidebar() {
                           handleActiveItem(child.to, child.display)
                         }
                       >
-                        <Box className={style.accordion_dot}></Box>
-                        <Box className={style.accordion_text}>
-                          {child.display}
+                        <Box
+                          sx={{
+                            display: "flex",
+
+                            alignItems: "center",
+                          }}
+                        >
+                          <Box className={style.accordion_dot}></Box>
+                          <Box className={style.accordion_text}>
+                            {child.display}
+                          </Box>
                         </Box>
+                        {child.display === "Extended sidebar" && (
+                          <CustomWidthTooltip
+                            title="Added in version 3.1"
+                            arrow
+                            placement="right"
+                          >
+                            <Box className={style.versionIcon}>V3.0</Box>
+                          </CustomWidthTooltip>
+                        )}
+                        {signedItem.includes(child.display) && (
+                          <Box className={style.purpledot}></Box>
+                        )}
                       </Box>
                     ))}
                   </AccordionDetails>
