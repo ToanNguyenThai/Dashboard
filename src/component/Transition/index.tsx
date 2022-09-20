@@ -17,9 +17,7 @@ export const notiTransition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return (
-    <Grow style={{ transformOrigin: "1800px 30px" }} ref={ref} {...props} />
-  );
+  return <Grow style={{ transformOrigin: "88% 30px" }} ref={ref} {...props} />;
 });
 
 export const messTransition = React.forwardRef(function Transition(
@@ -28,9 +26,7 @@ export const messTransition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return (
-    <Grow style={{ transformOrigin: "1850px 30px" }} ref={ref} {...props} />
-  );
+  return <Grow style={{ transformOrigin: "95% 30px" }} ref={ref} {...props} />;
 });
 
 export const langTransition = React.forwardRef(function Transition(
@@ -39,9 +35,7 @@ export const langTransition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return (
-    <Grow style={{ transformOrigin: "1820px 30px" }} ref={ref} {...props} />
-  );
+  return <Grow style={{ transformOrigin: "90% 30px" }} ref={ref} {...props} />;
 });
 
 export const megaTransition = React.forwardRef(function Transition(
@@ -71,7 +65,5 @@ export const profileTransition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return (
-    <Grow style={{ transformOrigin: "2000px 30px" }} ref={ref} {...props} />
-  );
+  return <Grow style={{ transformOrigin: "100% 30px" }} ref={ref} {...props} />;
 });
