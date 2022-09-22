@@ -127,12 +127,12 @@ export default function Header() {
     <>
       <Box
         sx={{
-          width: "calc(100% - 307px);",
-          height: "85px",
+          width: "calc(100% - 290px);",
+          height: "80px",
           backgroundColor: "white",
           position: "fixed",
           top: 0,
-          marginLeft: "307px",
+          marginLeft: "290px",
           boxShadow:
             "rgb(34 51 84 / 20%) 0px 2px 8px -3px, rgb(34 51 84 / 10%) 0px 5px 22px -4px",
           display: "flex",
@@ -145,7 +145,7 @@ export default function Header() {
       >
         <Box className={style.leftContainer}>
           <Box onClick={handleOpenSearch} className={style.icon}>
-            <MdSearch fontSize="25px" />
+            <MdSearch fontSize="20px" />
           </Box>
           <Box className={style.separate}></Box>
           <Box onClick={handleOpenMegaMenu} className={style.headerOption}>

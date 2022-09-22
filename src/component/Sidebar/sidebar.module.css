@@ -1,5 +1,5 @@
 .sidebar {
-  width: 307px;
+  width: 290px;
   height: 100%;
   background-color: #11192a;
   position: fixed;
@@ -9,7 +9,7 @@
 }
 
 .sidebar_body {
-  height: 93%;
+  height: 94.5%;
   overflow-y: auto;
 }
 
@@ -20,7 +20,7 @@
 
 .avatar {
   border-radius: 100%;
-  transform: scale(0.95);
+  transform: scale(0.85);
 }
 
 .sidebar_body::-webkit-scrollbar {
