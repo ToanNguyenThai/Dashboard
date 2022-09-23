@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import avatar from "../../assets/img/avatar.jpg";
@@ -144,9 +144,11 @@ export default function Header() {
         }}
       >
         <Box className={style.leftContainer}>
-          <Box onClick={handleOpenSearch} className={style.icon}>
-            <MdSearch fontSize="20px" />
-          </Box>
+          <CustomWidthTooltip title="Search" arrow placement="bottom">
+            <Box onClick={handleOpenSearch} className={style.searchIcon}>
+              <MdSearch fontSize="20px" />
+            </Box>
+          </CustomWidthTooltip>
           <Box className={style.separate}></Box>
           <Box onClick={handleOpenMegaMenu} className={style.headerOption}>
             Mega menu

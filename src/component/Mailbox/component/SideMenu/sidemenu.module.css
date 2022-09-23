@@ -16,12 +16,15 @@
   border-radius: 10px;
 }
 
-.sidebar_text {
+.sidebar_text,
+.sidebar_text_bold {
   font-size: 13px;
   font-family: var(--main-font);
-  font-weight: 600;
-  color: black;
+  color: #223354 !important;
   text-transform: capitalize;
+}
+.sidebar_text_bold {
+  font-weight: 700;
 }
 .sidebar_icon {
   font-size: 22px;

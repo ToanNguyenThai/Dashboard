@@ -28,6 +28,7 @@ export default function SideMenu() {
       icon: <MdInbox></MdInbox>,
       selectIndex: 0,
       color: "#5569ff",
+      isTag: false,
     },
     {
       type: "outbox",
@@ -35,6 +36,7 @@ export default function SideMenu() {
       icon: <MdOutbox></MdOutbox>,
       selectIndex: 1,
       color: "#5569ff",
+      isTag: false,
     },
     {
       type: "favourites",
@@ -42,6 +44,7 @@ export default function SideMenu() {
       icon: <MdFavorite></MdFavorite>,
       selectIndex: 2,
       color: "#5569ff",
+      isTag: false,
     },
     {
       type: "drafts",
@@ -49,6 +52,7 @@ export default function SideMenu() {
       icon: <MdDrafts></MdDrafts>,
       selectIndex: 3,
       color: "#5569ff",
+      isTag: false,
     },
 
     {
@@ -57,6 +61,7 @@ export default function SideMenu() {
       icon: <MdDelete></MdDelete>,
       selectIndex: 4,
       color: "#5569ff",
+      isTag: false,
     },
     {
       type: "important",
@@ -64,6 +69,7 @@ export default function SideMenu() {
       icon: <FaTag></FaTag>,
       selectIndex: 5,
       color: "#57ca22",
+      isTag: true,
     },
     {
       type: "work",
@@ -71,6 +77,7 @@ export default function SideMenu() {
       icon: <FaTag></FaTag>,
       selectIndex: 6,
       color: "#ffa319",
+      isTag: true,
     },
     {
       type: "task",
@@ -78,6 +85,7 @@ export default function SideMenu() {
       icon: <FaTag></FaTag>,
       selectIndex: 7,
       color: "#33c2ff",
+      isTag: true,
     },
     {
       type: "business",
@@ -85,6 +93,7 @@ export default function SideMenu() {
       icon: <FaTag></FaTag>,
       selectIndex: 8,
       color: "#ff1943",
+      isTag: true,
     },
   ];
   const handleActiveItem = (index: number, type: string) => {
@@ -156,7 +165,13 @@ export default function SideMenu() {
                 <Box className={style.sidebar_icon} sx={{ color: item.color }}>
                   {item.icon}
                 </Box>
-                <Box className={style.sidebar_text}>{item.display}</Box>
+                <Box
+                  className={
+                    !item.isTag ? style.sidebar_text_bold : style.sidebar_text
+                  }
+                >
+                  {item.display}
+                </Box>
               </Box>
               {getNumberByType(item.type) !== 0 && (
                 <Box className={style.sidebar_number}>
