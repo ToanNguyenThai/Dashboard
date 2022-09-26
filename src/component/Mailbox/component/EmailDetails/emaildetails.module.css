@@ -95,6 +95,7 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .separate {
   width: 1px;
