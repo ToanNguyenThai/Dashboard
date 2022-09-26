@@ -12,12 +12,15 @@ import { RiMailCheckFill } from "react-icons/ri";
 import { HiDotsVertical } from "react-icons/hi";
 import avatar from "../../../../assets/img/avatar.jpg";
 import parse from "html-react-parser";
+
+import Reply from "./Reply";
+
 import style from "./emaildetails.module.css";
 
 export default function EmailDetails() {
   const [open, setOpen] = useState(false);
   const [thisEmail, setThisEmail] = useState<Email>();
-
+  const [Recipient, setRecipient] = useState("");
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,6 +32,7 @@ export default function EmailDetails() {
     const { emailID } = params;
     const tmp = email.filter((item) => item.id == parseInt(emailID || ""));
     setThisEmail(tmp[0]);
+    setRecipient(tmp[0].from);
   }, [params]);
 
   return (
@@ -79,12 +83,12 @@ export default function EmailDetails() {
         </Box>
       </Box>
 
-      <Box sx={{ padding: "30px" }}>
+      <Box sx={{ padding: "36px 15px", paddingRight: "25px" }}>
         <Typography
-          fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
-          variant="h4"
-          fontSize="30px"
-          sx={{ paddingLeft: "50px" }}
+          fontSize="25px"
+          fontWeight="700"
+          color="#223354"
+          sx={{ paddingLeft: "90px" }}
         >
           {thisEmail?.title}
         </Typography>
@@ -100,35 +104,20 @@ export default function EmailDetails() {
             sx={{
               display: "flex",
               alignItems: "center",
-              marginTop: "30px",
+              marginTop: "20px",
             }}
           >
             <img src={avatar} className={style.avatar}></img>
             <Box>
-              <Typography
-                fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
-                variant="h6"
-                fontSize="16px"
-                fontWeight="600"
-              >
+              <Typography variant="h6" fontSize="16px" fontWeight="600">
                 {thisEmail?.from}
               </Typography>
-              <Typography
-                fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
-                variant="body1"
-                fontSize="14px"
-                color="#223354B3"
-              >
+              <Typography variant="body1" fontSize="14px" color="#223354B3">
                 to {thisEmail?.to}
               </Typography>
             </Box>
           </Box>
-          <Typography
-            fontFamily={`"Segoe UI", Tahoma, Geneva, Verdana, sans-serif`}
-            variant="body1"
-            fontSize="14px"
-            color="#223354B3"
-          >
+          <Typography variant="body1" fontSize="14px" color="#223354B3">
             {thisEmail?.day}
           </Typography>
         </Box>
@@ -137,7 +126,7 @@ export default function EmailDetails() {
           {parse(thisEmail?.content || "")}
         </Box>
       </Box>
-
+      <Reply recipient={Recipient}></Reply>
       <Modal
         open={open}
         onClose={handleClose}
