@@ -96,3 +96,13 @@ span {
 .apexcharts-svg.apexcharts-zoomable.hovering-zoom {
   cursor: unset !important;
 }
+
+.ql-container {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.ql-toolbar {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}

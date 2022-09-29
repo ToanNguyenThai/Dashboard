@@ -16,7 +16,7 @@ import { BiConversation } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../../redux/slice/login";
 
-import { CustomWidthTooltip } from "../CustomWidthTooltip";
+import { CustomWidthTooltip } from "../UI-components/CustomWidthTooltip";
 import Dashboard from "./Modal/Dashboard";
 import Language from "./Modal/Language";
 import Profile from "./Modal/Profile";
@@ -33,7 +33,7 @@ import {
   langTransition,
   messTransition,
   dashboardTransition,
-} from "../Transition";
+} from "../UI-components/Transition";
 
 import style from "./header.module.css";
 

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { emailSelectors, emailActions } from "../../../../redux/slice/email";
 import { Email } from "../EmailList";
 import { Box, Typography, Modal } from "@mui/material";
-import { CustomWidthTooltip } from "../../../CustomWidthTooltip";
+import { CustomWidthTooltip } from "../../../UI-components/CustomWidthTooltip";
 import { MdArrowBack, MdArchive } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 

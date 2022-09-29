@@ -7,7 +7,7 @@ import {
 } from "react-icons/md";
 import { TbRotateClockwise } from "react-icons/tb";
 import { FaQuestionCircle } from "react-icons/fa";
-import { CustomWidthTooltip } from "../../../../CustomWidthTooltip";
+import { CustomWidthTooltip } from "../../../../UI-components/CustomWidthTooltip";
 import style from "./withoutvalue.module.css";
 
 interface WithoutValueProps {

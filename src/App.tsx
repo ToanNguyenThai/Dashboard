@@ -5,6 +5,7 @@ import Main from "./layout/Main";
 import Mailbox from "./component/Mailbox";
 import EmailList from "./component/Mailbox/component/EmailList";
 import EmailDetails from "./component/Mailbox/component/EmailDetails";
+import AddProduct from "./component/AddProduct";
 import "./i18next";
 
 import "./assets/css/global.css";
@@ -17,6 +18,7 @@ function App() {
           <Route path=":type" element={<EmailList />} />
           <Route path="details/:emailID" element={<EmailDetails />} />
         </Route>
+        <Route path="addProduct" element={<AddProduct />}></Route>
       </Route>
     </Routes>
   );

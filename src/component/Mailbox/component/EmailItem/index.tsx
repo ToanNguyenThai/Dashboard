@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { emailActions } from "../../../../redux/slice/email";
 import { Box, Checkbox, Typography } from "@mui/material";
-import { CustomWidthTooltip } from "../../../CustomWidthTooltip";
+import { CustomWidthTooltip } from "../../../UI-components/CustomWidthTooltip";
 
 import { useNavigate } from "react-router-dom";
 import { MdArchive } from "react-icons/md";

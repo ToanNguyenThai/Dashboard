@@ -8,7 +8,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { CustomWidthTooltip } from "../../component/CustomWidthTooltip";
+import { CustomWidthTooltip } from "../../component/UI-components/CustomWidthTooltip";
 
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate, useLocation } from "react-router-dom";

@@ -10,10 +10,13 @@ import {
 import { MdSearch, MdArchive } from "react-icons/md";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { RiMailCheckFill } from "react-icons/ri";
-import style from "./emaillist.module.css";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { emailSelectors } from "../../../../redux/slice/email";
+
+import { styleTextfield } from "../../../UI-components/CustomTextField";
+import style from "./emaillist.module.css";
+
 export type EmailType =
   | "inbox"
   | "outbox"
@@ -65,13 +68,6 @@ type ParamType = {
 };
 
 export default function EmailList() {
-  const styleTextfield = {
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "#5569ff",
-      },
-    },
-  };
   const email: EmailWithCheckBox[] = useSelector(emailSelectors.selectEmail);
 
   const [filledEmail, setFilledEmail] = useState<EmailWithCheckBox[]>();

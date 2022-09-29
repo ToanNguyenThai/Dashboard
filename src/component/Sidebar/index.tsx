@@ -9,8 +9,8 @@ import {
   Accordion,
   Modal,
 } from "@mui/material";
-import { CustomWidthTooltipWhite } from "../CustomWidthTooltipWhite";
-import { CustomWidthTooltip } from "../CustomWidthTooltip";
+import { CustomWidthTooltipWhite } from "../UI-components/CustomWidthTooltipWhite";
+import { CustomWidthTooltip } from "../UI-components/CustomWidthTooltip";
 
 import { useSelector, useDispatch } from "react-redux";
 import { loginSelectors, loginActions } from "../../redux/slice/login";
@@ -275,7 +275,7 @@ export default function Sidebar() {
             },
             {
               display: "Create",
-              to: `/Statistics`,
+              to: `/addProduct`,
             },
           ],
         },
@@ -376,7 +376,7 @@ export default function Sidebar() {
 
   const handleActiveItem = (url: string, display: string) => {
     setActiveItem(display);
-    if (url === "/mail") navigate(url);
+    if (url === "/mail" || url === "/addProduct") navigate(url);
     else navigate("/");
   };
   const signOut = () => {

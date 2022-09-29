@@ -1,21 +1,15 @@
 import { Box, Typography, TextField } from "@mui/material";
 import { MdReply, MdEmojiEmotions, MdAttachFile } from "react-icons/md";
 
-import { CustomWidthTooltip } from "../../../CustomWidthTooltip";
+import { CustomWidthTooltip } from "../../../UI-components/CustomWidthTooltip";
 import avatar from "../../../../assets/img/avatar.jpg";
 
+import { styleTextfield } from "../../../UI-components/CustomTextField";
 import style from "./emaildetails.module.css";
 interface ReplyProps {
   recipient: string;
 }
 export default function Reply({ recipient }: ReplyProps) {
-  const styleTextfield = {
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "#5569ff",
-      },
-    },
-  };
   return (
     <Box className={style.reply}>
       <img
