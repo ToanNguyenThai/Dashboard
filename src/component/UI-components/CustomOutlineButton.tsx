@@ -1,11 +1,11 @@
 import Button, { ButtonProps } from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
-export const CustomButton = styled(Button)<ButtonProps>(({ theme }) => ({
+export const CustomOutlineButton = styled(Button)<ButtonProps>(({ theme }) => ({
   color: theme.palette.getContrastText("#5569ff"),
-  backgroundColor: "#5569ff",
+  border: "1px solid #aab4ff",
   borderRadius: "10px",
-
   "&:hover": {
-    backgroundColor: "#4454cc",
+    backgroundColor: "#edf0ff",
+    border: "1px solid #5569ff",
   },
 }));

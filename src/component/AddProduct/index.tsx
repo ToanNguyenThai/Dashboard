@@ -19,7 +19,7 @@ export default function AddProduct() {
       >
         <LeftLayout />
       </Box>
-      <Box sx={{ width: "399px", padding: "20px 20px 0 20px" }}>
+      <Box sx={{ width: "399px", padding: "25px 25px 0 25px" }}>
         <RightLayout />
       </Box>
     </Box>
