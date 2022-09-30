@@ -15,6 +15,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginActions, loginSelectors } from "../../redux/slice/login";
 
+import { styleTextfield } from "../../component/UI-components/CustomTextField";
+import { errorTextfield } from "../../component/UI-components/CustomErrorTextField";
 import logos from "../../assets/img/logos.png";
 import style from "./login.module.css";
 export default function Login() {
@@ -39,21 +41,6 @@ export default function Login() {
 
   const onSubmit = (data: any) => {
     dispatch(loginActions.login(data));
-  };
-
-  const styleTextfield = {
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "#5569ff",
-      },
-    },
-  };
-  const errorTextfield = {
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-focused fieldset": {
-        borderColor: "red",
-      },
-    },
   };
 
   return (

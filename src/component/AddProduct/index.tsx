@@ -12,14 +12,14 @@ export default function AddProduct() {
     >
       <Box
         sx={{
-          width: "75.5%",
+          width: "calc(100% - 399px)",
           borderRight: "1px solid #d5d8dc",
           padding: "25px 35px 0 35px",
         }}
       >
         <LeftLayout />
       </Box>
-      <Box sx={{ width: "24.5%", padding: "20px 20px 0 20px" }}>
+      <Box sx={{ width: "399px", padding: "20px 20px 0 20px" }}>
         <RightLayout />
       </Box>
     </Box>

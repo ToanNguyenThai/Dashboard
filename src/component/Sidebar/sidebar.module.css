@@ -118,7 +118,7 @@
   height: 7px;
   border-radius: 100%;
   background-color: #11192a;
-  transition: all linear 0.2s;
+  transition: all linear 0.3s;
   transform: translateY(-1px);
 }
 
