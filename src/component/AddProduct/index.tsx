@@ -6,7 +6,7 @@ export default function AddProduct() {
     <Box
       sx={{
         display: "flex",
-        height: "calc(100vh - 80px)",
+        height: "calc(100% - 80px)",
         backgroundColor: "#eff3f7",
       }}
     >
@@ -14,7 +14,7 @@ export default function AddProduct() {
         sx={{
           width: "calc(100% - 399px)",
           borderRight: "1px solid #d5d8dc",
-          padding: "25px 35px 0 35px",
+          padding: "25px 35px 35px 35px",
         }}
       >
         <LeftLayout />

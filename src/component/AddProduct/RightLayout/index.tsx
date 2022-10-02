@@ -6,7 +6,7 @@ export default function RightLayout() {
   return (
     <>
       <Publish></Publish>
-      {/* <Categories></Categories> */}
+      <Categories></Categories>
     </>
   );
 }

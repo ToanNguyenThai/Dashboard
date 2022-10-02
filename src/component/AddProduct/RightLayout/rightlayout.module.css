@@ -1,0 +1,14 @@
+.greenDot {
+  width: 13.5px;
+  height: 13.5px;
+  border-radius: 100%;
+  background-color: #57ca22;
+  transform: translateY(-1px);
+}
+.draftBtn {
+  color: #868baf !important;
+  border-color: #868baf !important;
+}
+.draftBtn:hover {
+  border-color: #505369 !important;
+}
