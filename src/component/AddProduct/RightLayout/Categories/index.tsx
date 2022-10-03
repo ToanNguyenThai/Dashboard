@@ -74,7 +74,7 @@ export default function Categories() {
             color: "#5569ff",
             padding: "3px 15px",
             textTransform: "unset",
-            fontWeight: "500",
+            fontWeight: "600",
           }}
         >
           Add category

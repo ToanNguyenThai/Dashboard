@@ -24,7 +24,7 @@ export default function Publish() {
             color: "#5569ff",
             padding: "3px 15px",
             textTransform: "unset",
-            fontWeight: "500",
+            fontWeight: "600",
           }}
           startIcon={<HiOutlinePencil fontSize="10px" />}
         >
