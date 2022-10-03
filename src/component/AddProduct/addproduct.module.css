@@ -1,0 +1,13 @@
+.rightlayout {
+  width: 399px;
+  overflow-y: auto;
+  padding: 25px 25px 0 25px;
+}
+.rightlayout::-webkit-scrollbar {
+  display: none;
+}
+.leftlayout {
+  width: calc(100% - 399px);
+  border-right: 1px solid #d5d8dc;
+  padding: 25px 35px 0px 35px;
+}

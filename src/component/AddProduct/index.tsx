@@ -1,26 +1,28 @@
 import { Box } from "@mui/material";
 import LeftLayout from "./LeftLayout";
 import RightLayout from "./RightLayout";
+import style from "./addproduct.module.css";
+
 export default function AddProduct() {
   return (
     <Box
       sx={{
-        display: "flex",
         height: "calc(100% - 80px)",
         backgroundColor: "#eff3f7",
       }}
     >
       <Box
         sx={{
-          width: "calc(100% - 399px)",
-          borderRight: "1px solid #d5d8dc",
-          padding: "25px 35px 35px 35px",
+          display: "flex",
+          height: "100%",
         }}
       >
-        <LeftLayout />
-      </Box>
-      <Box sx={{ width: "399px", padding: "25px 25px 0 25px" }}>
-        <RightLayout />
+        <Box className={style.leftlayout}>
+          <LeftLayout />
+        </Box>
+        <Box className={style.rightlayout}>
+          <RightLayout />
+        </Box>
       </Box>
     </Box>
   );
