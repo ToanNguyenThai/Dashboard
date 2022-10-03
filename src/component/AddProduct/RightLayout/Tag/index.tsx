@@ -1,10 +1,15 @@
+import { useState } from "react";
 import { Box, Typography, Chip, Stack } from "@mui/material";
 import { PreviewCard } from "../../../UI-components/PreviewCard";
 import { MdCancel } from "react-icons/md";
 import style from "../rightlayout.module.css";
+const tagList = ["new", "fresh", "electronics", "computer", "software"];
+
 export default function Tag() {
-  const handleDelete = () => {
-    console.log("abc");
+  const [tags, setTags] = useState(tagList);
+  const handleDelete = (deletedTag: string) => {
+    let curr_tag = tags.filter((tag) => tag !== deletedTag);
+    setTags(curr_tag);
   };
   return (
     <PreviewCard sx={{ marginTop: "25px" }}>
@@ -20,51 +25,41 @@ export default function Tag() {
           Product Tags
         </Typography>
       </Box>
-      <Box
-        sx={{
-          padding: "18px",
-
-          borderTop: "1px solid #d5d8dc",
-        }}
-      >
-        <Stack sx={{ marginBottom: "15px" }} direction="row" spacing={3}>
-          <Chip
-            label="new"
-            variant="outlined"
-            deleteIcon={<MdCancel color="#ff5e7b" />}
-            onDelete={handleDelete}
-          />
-          <Chip
-            label="fresh"
-            variant="outlined"
-            deleteIcon={<MdCancel color="#ff5e7b" />}
-            onDelete={handleDelete}
-          />
-        </Stack>
-
-        <Stack sx={{ marginBottom: "15px" }} direction="row" spacing={3}>
-          <Chip
-            label="electronics"
-            variant="outlined"
-            deleteIcon={<MdCancel color="#ff5e7b" />}
-            onDelete={handleDelete}
-          />
-          <Chip
-            label="computer"
-            variant="outlined"
-            deleteIcon={<MdCancel color="#ff5e7b" />}
-            onDelete={handleDelete}
-          />
-        </Stack>
-        <Stack direction="row" spacing={3}>
-          <Chip
-            label="software"
-            variant="outlined"
-            deleteIcon={<MdCancel color="#ff5e7b" />}
-            onDelete={handleDelete}
-          />
-        </Stack>
-      </Box>
+      <>
+        {tags.length > 0 ? (
+          <Box
+            sx={{
+              padding: "18px",
+              display: "flex",
+              flexWrap: "wrap",
+              borderTop: "1px solid #d5d8dc",
+            }}
+          >
+            {tags.map((item) => (
+              <Chip
+                label={item}
+                variant="outlined"
+                deleteIcon={<MdCancel color="#ff5e7b" />}
+                onDelete={() => handleDelete(item)}
+                sx={{ margin: "9px" }}
+              />
+            ))}
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              padding: "36px",
+              display: "flex",
+              justifyContent: "center",
+              borderTop: "1px solid #d5d8dc",
+            }}
+          >
+            <Typography fontWeight="500" color="#223354B3" fontSize="15px">
+              There are no product tags
+            </Typography>
+          </Box>
+        )}
+      </>
     </PreviewCard>
   );
 }
