@@ -15,9 +15,9 @@
 .draftBtn:hover {
   border-color: #505369 !important;
 }
-.uploadContainer {
+.drop_file_input {
+  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
@@ -27,7 +27,49 @@
   border-radius: 10px;
   border: 1px dashed rgba(34, 51, 84, 0.3);
   transition: all linear 0.2s;
+  background-color: #fbfbfc;
 }
-.uploadContainer:hover {
+.drop_file_input input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.drop_file_input_label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drop_file_input:hover {
   border-color: #5569ff;
+}
+.rejectSign,
+.acceptSign {
+  width: 50px;
+  height: 50px;
+  background-color: #ff6883;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--main-font);
+}
+.acceptSign {
+  background-color: #01d301;
+}
+.uploadSuccess {
+  border-radius: 10px;
+  background-color: rgb(243, 251, 239);
+  display: flex;
+  padding: 8px 16px;
+  color: rgb(54, 86, 40);
+  /* color: #94dd72; */
 }
