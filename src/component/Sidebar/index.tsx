@@ -574,13 +574,13 @@ export default function Sidebar() {
       <Box className={style.sidebar_footer}>
         <CustomWidthTooltipWhite title="Events Calendar" arrow placement="top">
           <Box className={style.sidebar_footer_item}>
-            <MdEditCalendar fontSize="20px"></MdEditCalendar>
+            <MdEditCalendar fontSize="17px"></MdEditCalendar>
           </Box>
         </CustomWidthTooltipWhite>
 
         <CustomWidthTooltipWhite title="Messenger" arrow placement="top">
           <Box className={style.sidebar_footer_item}>
-            <MdOutlineMessage fontSize="20px"></MdOutlineMessage>
+            <MdOutlineMessage fontSize="17px"></MdOutlineMessage>
             <Box className={style.greendot}></Box>
           </Box>
         </CustomWidthTooltipWhite>
@@ -589,7 +589,7 @@ export default function Sidebar() {
             onClick={() => dispatch(loginActions.logout())}
             className={style.sidebar_footer_item}
           >
-            <MdOutlinePowerSettingsNew fontSize="20px"></MdOutlinePowerSettingsNew>
+            <MdOutlinePowerSettingsNew fontSize="17px"></MdOutlinePowerSettingsNew>
           </Box>
         </CustomWidthTooltipWhite>
       </Box>
