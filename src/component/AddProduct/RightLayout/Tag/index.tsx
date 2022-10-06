@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Box, Typography, Chip, Stack } from "@mui/material";
 import { PreviewCard } from "../../../UI-components/PreviewCard";
 import { MdCancel } from "react-icons/md";
-import style from "../rightlayout.module.css";
 const tagList = ["new", "fresh", "electronics", "computer", "software"];
 
 export default function Tag() {

@@ -374,10 +374,38 @@ export default function Sidebar() {
     setActiveItem(address);
   }, []);
 
+  useEffect(() => {
+    let noChildrenItem: string[] = [];
+    let removeItem = "";
+    sidebarNavItems.forEach((i) => {
+      i.field_child.forEach((item) => {
+        if (!item?.hasOwnProperty("children"))
+          noChildrenItem.push(item.display);
+      });
+    });
+    noChildrenItem.forEach((item) => {
+      if (activeIndex.includes(item)) removeItem = item;
+    });
+    console.log(location.pathname);
+
+    if (!location.pathname.includes(removeItem.toLowerCase())) {
+      setActiveIndex(
+        activeIndex.filter((activeItem) => activeItem !== removeItem)
+      );
+    }
+  }, [location]);
+
   const handleActiveItem = (url: string, display: string) => {
     setActiveItem(display);
     if (url === "/mail" || url === "/addProduct") navigate(url);
     else navigate("/");
+  };
+  const handleNoChildrenItemClick = (display: string) => {
+    if (!activeIndex.includes(display))
+      setActiveIndex((oldArray) => [...oldArray, display]);
+    else return;
+    setActiveItem("");
+    navigate(`/${display.toLowerCase()}`);
   };
   const signOut = () => {
     dispatch(loginActions.logout());
@@ -472,99 +500,127 @@ export default function Sidebar() {
               <Box className={style.field_title}>{sideItem.field}</Box>
 
               {sideItem.field_child.map((item, index) => (
-                <Accordion
-                  key={index}
-                  defaultExpanded={activeIndex.includes(item.display)}
-                  className={`${style.customAccordion}`}
-                  onChange={(e, expanded) => {
-                    if (expanded)
-                      setActiveIndex((oldArray) => [...oldArray, item.display]);
-                    else
-                      setActiveIndex(
-                        activeIndex.filter(
-                          (activeItem) => activeItem !== item.display
-                        )
-                      );
-                  }}
-                >
-                  <AccordionSummary
-                    sx={{
-                      alignItems: "center",
-                    }}
-                    expandIcon={
-                      item.children ? (
-                        <MdKeyboardArrowDown
-                          className={style.sidebar_expandIcon}
-                        />
-                      ) : (
-                        ""
-                      )
-                    }
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
-                    className={`${style.sidebar_item} ${
-                      activeIndex.includes(item.display) && style.active
-                    } `}
-                  >
-                    <Box className={style.sidebar_icon}>{item.icon}</Box>
-                    <Box className={style.sidebar_text}>{item.display}</Box>
-                    {signedItem.includes(item.display) && (
-                      <Box
-                        sx={{
-                          position: "absolute",
-                          right: "35px",
-                          top: "19px",
-                        }}
-                        className={style.purpledot}
-                      ></Box>
-                    )}
-                  </AccordionSummary>
-
-                  <AccordionDetails>
-                    {item?.children?.map((child) => (
-                      <Box
-                        sx={{
-                          paddingLeft: "30px",
-
-                          display: "flex",
-                          justifyContent: "space-between",
-                        }}
-                        className={`${style.accordion_item} ${
-                          activeItem === child.display &&
-                          style.active_accordion_item
-                        }  `}
-                        onClick={() =>
-                          handleActiveItem(child.to, child.display)
+                <>
+                  {item.children ? (
+                    <Accordion
+                      key={index}
+                      defaultExpanded={activeIndex.includes(item.display)}
+                      className={`${style.customAccordion}`}
+                      onChange={(e, expanded) => {
+                        if (expanded)
+                          setActiveIndex((oldArray) => [
+                            ...oldArray,
+                            item.display,
+                          ]);
+                        else
+                          setActiveIndex(
+                            activeIndex.filter(
+                              (activeItem) => activeItem !== item.display
+                            )
+                          );
+                      }}
+                    >
+                      <AccordionSummary
+                        expandIcon={
+                          <MdKeyboardArrowDown
+                            className={style.sidebar_expandIcon}
+                          />
                         }
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        className={`${style.sidebar_item} ${
+                          activeIndex.includes(item.display) && style.active
+                        } `}
                       >
+                        <Box className={style.sidebar_icon}>{item.icon}</Box>
+                        <Box className={style.sidebar_text}>{item.display}</Box>
+                        {signedItem.includes(item.display) && (
+                          <Box
+                            sx={{
+                              position: "absolute",
+                              right: "35px",
+                              top: "19px",
+                            }}
+                            className={style.purpledot}
+                          ></Box>
+                        )}
+                      </AccordionSummary>
+
+                      <AccordionDetails>
+                        {item?.children?.map((child) => (
+                          <Box
+                            sx={{
+                              paddingLeft: "30px",
+
+                              display: "flex",
+                              justifyContent: "space-between",
+                            }}
+                            className={`${style.accordion_item} ${
+                              activeItem === child.display &&
+                              style.active_accordion_item
+                            }  `}
+                            onClick={() =>
+                              handleActiveItem(child.to, child.display)
+                            }
+                          >
+                            <Box
+                              sx={{
+                                display: "flex",
+
+                                alignItems: "center",
+                              }}
+                            >
+                              <Box className={style.accordion_dot}></Box>
+                              <Box className={style.accordion_text}>
+                                {child.display}
+                              </Box>
+                            </Box>
+                            {child.display === "Extended sidebar" && (
+                              <CustomWidthTooltip
+                                title="Added in version 3.1"
+                                arrow
+                                placement="right"
+                              >
+                                <Box className={style.versionIcon}>V3.0</Box>
+                              </CustomWidthTooltip>
+                            )}
+                            {signedItem.includes(child.display) && (
+                              <Box className={style.purpledot}></Box>
+                            )}
+                          </Box>
+                        ))}
+                      </AccordionDetails>
+                    </Accordion>
+                  ) : (
+                    <Box
+                      sx={{
+                        paddingLeft: "25px",
+                      }}
+                      className={`${style.sidebar_item} ${
+                        activeIndex.includes(item.display) && style.active
+                      } `}
+                      onClick={() => handleNoChildrenItemClick(item.display)}
+                    >
+                      <Box className={style.sidebar_icon}>{item.icon}</Box>
+                      <Box
+                        sx={{ transform: "translate3d(-5px, 0px, 0)" }}
+                        className={style.sidebar_text}
+                      >
+                        {item.display}
+                      </Box>
+                      {signedItem.includes(item.display) && (
                         <Box
                           sx={{
-                            display: "flex",
-
-                            alignItems: "center",
+                            position: "absolute",
+                            right: "35px",
+                            top: "19px",
                           }}
-                        >
-                          <Box className={style.accordion_dot}></Box>
-                          <Box className={style.accordion_text}>
-                            {child.display}
-                          </Box>
-                        </Box>
-                        {child.display === "Extended sidebar" && (
-                          <CustomWidthTooltip
-                            title="Added in version 3.1"
-                            arrow
-                            placement="right"
-                          >
-                            <Box className={style.versionIcon}>V3.0</Box>
-                          </CustomWidthTooltip>
-                        )}
-                        {signedItem.includes(child.display) && (
-                          <Box className={style.purpledot}></Box>
-                        )}
-                      </Box>
-                    ))}
-                  </AccordionDetails>
-                </Accordion>
+                          className={style.purpledot}
+                        ></Box>
+                      )}
+                    </Box>
+                  )}
+                </>
               ))}
             </Box>
           ))}

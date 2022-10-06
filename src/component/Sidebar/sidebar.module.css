@@ -37,6 +37,7 @@
   background-color: unset !important;
   height: 48px !important;
   position: relative;
+  border-radius: 10px !important;
 }
 
 .sidebar_expandIcon {
@@ -47,7 +48,6 @@
 .active,
 .sidebar_item:hover {
   background-color: #1f2737 !important;
-  border-radius: 10px !important;
 }
 
 .active .sidebar_expandIcon,
@@ -95,12 +95,12 @@
   background-color: unset !important;
   height: 40px !important;
   margin-top: 2px;
+  border-radius: 10px !important;
 }
 
 .active_accordion_item,
 .accordion_item:hover {
   background-color: #1f2737 !important;
-  border-radius: 10px !important;
 }
 
 .active_accordion_item .accordion_text,
