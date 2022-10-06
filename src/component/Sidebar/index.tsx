@@ -595,6 +595,7 @@ export default function Sidebar() {
                     <Box
                       sx={{
                         paddingLeft: "25px",
+                        margin: "10px 0 10px 0",
                       }}
                       className={`${style.sidebar_item} ${
                         activeIndex.includes(item.display) && style.active

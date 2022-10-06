@@ -1,0 +1,85 @@
+.prjHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 36px;
+  background-color: #f9fafc;
+  box-shadow: rgb(34 51 84 / 10%) 0px 2px 4px -3px,
+    rgb(34 51 84 / 5%) 0px 5px 12px -4px;
+  z-index: 9999111;
+}
+.prjBody {
+  padding: 36px;
+  background-color: #f2f5f9;
+}
+
+.newprj {
+  width: 960px;
+  box-shadow: rgb(255 255 255 / 30%) 0px 5rem 14rem 0px,
+    rgb(0 0 0 / 60%) 0px 0.8rem 2.3rem, rgb(0 0 0 / 45%) 0px 0.2rem 0.3rem;
+}
+.editor {
+  margin-bottom: 70px;
+  height: 100px;
+  width: 75%;
+}
+.drop_file_input {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  width: 75%;
+  height: 140px;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px dashed rgba(34, 51, 84, 0.3);
+  transition: all linear 0.2s;
+  background-color: #fbfbfc;
+}
+.drop_file_input input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.drop_file_input_label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drop_file_input:hover {
+  border-color: #5569ff;
+}
+.rejectSign,
+.acceptSign,
+.cloud {
+  width: 50px;
+  height: 50px;
+  background-color: #ff6883;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--main-font);
+}
+.acceptSign {
+  background-color: #01d301;
+}
+
+.uploadSuccess {
+  border-radius: 10px;
+  background-color: rgb(243, 251, 239);
+  display: flex;
+  padding: 8px 16px;
+  color: rgb(54, 86, 40);
+  /* color: #94dd72; */
+}
