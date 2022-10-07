@@ -89,7 +89,8 @@ h5,
 h6,
 p,
 a,
-span {
+span,
+button {
   font-family: var(--main-font) !important;
 }
 

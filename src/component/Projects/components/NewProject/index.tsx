@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import { useDropzone } from "react-dropzone";
 import { useForm, Controller } from "react-hook-form";
 import dayjs, { Dayjs } from "dayjs";
+import { MdOutlineCloudUpload, MdCheck, MdCancel } from "react-icons/md";
 
 import {
   Box,
@@ -18,8 +19,8 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 import { styleTextfield } from "../../../UI-components/CustomTextField";
 import { errorTextfield } from "../../../UI-components/CustomErrorTextField";
-import { MdOutlineCloudUpload, MdCheck, MdCancel } from "react-icons/md";
-
+import { CustomButton } from "../../../UI-components/CustomButton";
+import { CustomOutlineButton } from "../../../UI-components/CustomOutlineButton";
 import avatar from "../../../../assets/img/avatar.jpg";
 
 import "react-quill/dist/quill.snow.css";
@@ -54,7 +55,11 @@ const memberTag = [
   },
 ];
 
-export default function NewProject() {
+interface newPrjProps {
+  close: any;
+}
+
+export default function NewProject({ close }: newPrjProps) {
   const [value, setValue] = React.useState<Dayjs | null>(
     dayjs("2014-08-18T21:11:54")
   );
@@ -106,7 +111,13 @@ export default function NewProject() {
         </Box>
       </Box>
 
-      <Box sx={{ padding: "27px", borderTop: "1px solid #e8eaee" }}>
+      <Box
+        sx={{
+          padding: "27px",
+          borderTop: "1px solid #e8eaee",
+          paddingBottom: "60px",
+        }}
+      >
         <form>
           <Box
             sx={{
@@ -370,6 +381,36 @@ export default function NewProject() {
                 )}
               />
             </LocalizationProvider>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              marginTop: "30px",
+            }}
+          >
+            <Typography
+              width="22.5%"
+              fontSize="14px"
+              fontWeight="600"
+              textAlign="right"
+              marginRight="22px"
+              visibility="hidden"
+            >
+              Due Date:
+            </Typography>
+            <Box sx={{ display: "flex" }}>
+              <CustomButton className={style.createBtn}>
+                Create Project
+              </CustomButton>
+              <CustomOutlineButton
+                onClick={() => close()}
+                className={style.cancelBtn}
+              >
+                Cancel
+              </CustomOutlineButton>
+            </Box>
           </Box>
         </form>
       </Box>

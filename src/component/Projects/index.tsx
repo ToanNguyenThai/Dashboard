@@ -54,7 +54,7 @@ export default function Projects() {
         // TransitionComponent={megaTransition}
         className="modalBackdrop"
       >
-        <NewProject></NewProject>
+        <NewProject close={handleCloseNewProject}></NewProject>
       </CustomDialog>
     </>
   );
