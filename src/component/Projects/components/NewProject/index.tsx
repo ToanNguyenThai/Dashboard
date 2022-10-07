@@ -377,7 +377,11 @@ export default function NewProject({ close }: newPrjProps) {
                 value={value}
                 onChange={handleChangeDate}
                 renderInput={(params) => (
-                  <TextField sx={styleTextfield} {...params} />
+                  <TextField
+                    sx={styleTextfield}
+                    style={{ width: "31%" }}
+                    {...params}
+                  />
                 )}
               />
             </LocalizationProvider>
