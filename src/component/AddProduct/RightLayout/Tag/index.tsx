@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Typography, Chip, Stack } from "@mui/material";
+import { Box, Typography, Chip } from "@mui/material";
 import { PreviewCard } from "../../../UI-components/PreviewCard";
 import { MdCancel } from "react-icons/md";
 const tagList = ["new", "fresh", "electronics", "computer", "software"];
