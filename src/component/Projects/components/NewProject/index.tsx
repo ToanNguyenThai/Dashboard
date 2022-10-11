@@ -60,8 +60,8 @@ interface newPrjProps {
 }
 
 export default function NewProject({ close }: newPrjProps) {
-  const [value, setValue] = React.useState<Dayjs | null>(
-    dayjs("2014-08-18T21:11:54")
+  const [date, setDate] = React.useState<Dayjs | null>(
+    dayjs("2022-01-01T21:11:54")
   );
 
   const {
@@ -86,8 +86,14 @@ export default function NewProject({ close }: newPrjProps) {
       setFile(acceptedFile[0]);
     },
   });
-  const handleChangeDate = (newValue: Dayjs | null) => {
-    setValue(newValue);
+  const handleChangeDate = (newDate: Dayjs | null) => {
+    setDate(newDate);
+  };
+  const onSubmit = (data: any) => {
+    console.log(date);
+    console.log(data);
+
+    // dispatch(loginActions.login(data));
   };
   return (
     <Box className={style.newprj}>
@@ -184,7 +190,18 @@ export default function NewProject({ close }: newPrjProps) {
             >
               Description:
             </Typography>
-            <ReactQuill className={style.editor} theme="snow" />
+            <Controller
+              name={"description"}
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <ReactQuill
+                  onChange={onChange}
+                  value={value}
+                  className={style.editor}
+                  theme="snow"
+                />
+              )}
+            />
           </Box>
 
           <Box
@@ -203,10 +220,13 @@ export default function NewProject({ close }: newPrjProps) {
               Tags:
             </Typography>
             <Controller
-              name={"title"}
+              name={"tags"}
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Autocomplete
+                  autoHighlight
+                  onChange={(e, data) => onChange(data)}
+                  value={value}
                   sx={{ width: "75%" }}
                   multiple
                   id="tags-outlined"
@@ -308,10 +328,13 @@ export default function NewProject({ close }: newPrjProps) {
               Members:
             </Typography>
             <Controller
-              name={"title"}
+              name={"members"}
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Autocomplete
+                  autoHighlight
+                  onChange={(e, data) => onChange(data)}
+                  value={value}
                   sx={{ width: "75%" }}
                   multiple
                   id="tags-outlined"
@@ -374,7 +397,7 @@ export default function NewProject({ close }: newPrjProps) {
               <DesktopDatePicker
                 toolbarPlaceholder="mm/dd/yyyy"
                 inputFormat="MM/DD/YYYY"
-                value={value}
+                value={date}
                 onChange={handleChangeDate}
                 renderInput={(params) => (
                   <TextField
@@ -405,7 +428,10 @@ export default function NewProject({ close }: newPrjProps) {
               Due Date:
             </Typography>
             <Box sx={{ display: "flex" }}>
-              <CustomButton className={style.createBtn}>
+              <CustomButton
+                onClick={handleSubmit(onSubmit)}
+                className={style.createBtn}
+              >
                 Create Project
               </CustomButton>
               <CustomOutlineButton
