@@ -21,6 +21,7 @@ import { styleTextfield } from "../../../UI-components/CustomTextField";
 import { errorTextfield } from "../../../UI-components/CustomErrorTextField";
 import { CustomButton } from "../../../UI-components/CustomButton";
 import { CustomOutlineButton } from "../../../UI-components/CustomOutlineButton";
+
 import avatar from "../../../../assets/img/avatar.jpg";
 
 import "react-quill/dist/quill.snow.css";
@@ -94,6 +95,9 @@ export default function NewProject({ close }: newPrjProps) {
     console.log(data);
 
     // dispatch(loginActions.login(data));
+  };
+  const handleDelete = (item: string) => {
+    console.log(item);
   };
   return (
     <Box className={style.newprj}>
@@ -232,16 +236,21 @@ export default function NewProject({ close }: newPrjProps) {
                   id="tags-outlined"
                   options={projectTag}
                   getOptionLabel={(option) => option.title}
-                  /*   renderOption={(props: object, option: any, state: object) => (
-                    <div {...props}>
-                     {option.title}
-                    </div>
-                  )} */
-                  filterSelectedOptions
                   aria-label="Tags"
                   renderInput={(params) => (
                     <TextField {...params} sx={styleTextfield} />
                   )}
+                  renderTags={(option, getTagProps) => {
+                    return option.map((item, index) => (
+                      <Chip
+                        {...getTagProps({ index })}
+                        sx={{ backgroundColor: "#e8eaee", marginRight: "9px" }}
+                        label={item.title}
+                        variant="outlined"
+                        deleteIcon={<MdCancel color="#ff5e7b" />}
+                      />
+                    ));
+                  }}
                 />
               )}
             />
@@ -340,7 +349,6 @@ export default function NewProject({ close }: newPrjProps) {
                   id="tags-outlined"
                   options={memberTag}
                   getOptionLabel={(option) => option.name}
-                  filterSelectedOptions
                   aria-label="Members"
                   renderOption={(props: object, option: any, state: object) => (
                     <Box sx={{ display: "flex" }} {...props}>
@@ -357,6 +365,7 @@ export default function NewProject({ close }: newPrjProps) {
                   renderTags={(option, getTagProps) => {
                     return option.map((item, index) => (
                       <Chip
+                        {...getTagProps({ index })}
                         sx={{ backgroundColor: "#e8eaee", marginRight: "9px" }}
                         avatar={
                           <Avatar
@@ -368,7 +377,6 @@ export default function NewProject({ close }: newPrjProps) {
                         label={item.name}
                         variant="outlined"
                         deleteIcon={<MdCancel color="#ff5e7b" />}
-                        // onDelete={() => handleDelete(item)}
                       />
                     ));
                   }}
