@@ -7,6 +7,7 @@ import { HiOutlinePlusSm } from "react-icons/hi";
 
 import SearchProject from "./components/SearchProject";
 import NewProject from "./components/NewProject";
+import ListProject from "./components/ListProject";
 import style from "./projects.module.css";
 
 const CustomDialog = styled(Dialog)({
@@ -47,6 +48,7 @@ export default function Projects() {
       </Box>
       <Box className={style.prjBody}>
         <SearchProject></SearchProject>
+        <ListProject></ListProject>
       </Box>
       <CustomDialog
         open={openNewProject}

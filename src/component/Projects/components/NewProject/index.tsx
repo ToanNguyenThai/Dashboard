@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactQuill from "react-quill";
 import { useDropzone } from "react-dropzone";
 import { useForm, Controller } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import dayjs, { Dayjs } from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 import { MdOutlineCloudUpload, MdCheck, MdCancel } from "react-icons/md";
 
 import {
@@ -12,6 +14,7 @@ import {
   Autocomplete,
   Chip,
   Avatar,
+  CircularProgress,
 } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -21,7 +24,9 @@ import { styleTextfield } from "../../../UI-components/CustomTextField";
 import { errorTextfield } from "../../../UI-components/CustomErrorTextField";
 import { CustomButton } from "../../../UI-components/CustomButton";
 import { CustomOutlineButton } from "../../../UI-components/CustomOutlineButton";
-
+import { projectActions } from "../../../../redux/slice/project";
+import { ProjectState } from "../../../../types/types";
+import Toast from "../../../UI-components/Toast";
 import avatar from "../../../../assets/img/avatar.jpg";
 
 import "react-quill/dist/quill.snow.css";
@@ -55,15 +60,15 @@ const memberTag = [
     img: avatar,
   },
 ];
-
+const status = ["Completed", "Not started", "In progress"];
 interface newPrjProps {
   close: any;
 }
 
 export default function NewProject({ close }: newPrjProps) {
-  const [date, setDate] = React.useState<Dayjs | null>(
-    dayjs("2022-01-01T21:11:54")
-  );
+  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const [date, setDate] = useState<Dayjs | null>(dayjs("2022-01-01T21:11:54"));
 
   const {
     handleSubmit,
@@ -90,15 +95,35 @@ export default function NewProject({ close }: newPrjProps) {
   const handleChangeDate = (newDate: Dayjs | null) => {
     setDate(newDate);
   };
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+  }, [isLoading]);
   const onSubmit = (data: any) => {
-    console.log(date);
-    console.log(data);
+    setIsLoading(true);
+    let newPrj: ProjectState = {
+      id: uuidv4(),
+      title: data.title,
+      description: data.description,
+      tags: data.tags,
+      members: data.members,
+      dueDate: date?.format("MMMM DD YYYY"),
+      progress: Math.floor(Math.random() * 100),
+      status: status[Math.floor(Math.random() * status.length)],
+    };
+    dispatch(projectActions.createProject(newPrj));
 
-    // dispatch(loginActions.login(data));
+    setTimeout(() => {
+      Toast(
+        "success",
+        "A new project has been created successfully",
+        "top-right"
+      );
+      close();
+    }, 2000);
   };
-  const handleDelete = (item: string) => {
-    console.log(item);
-  };
+
   return (
     <Box className={style.newprj}>
       <Box sx={{ padding: "27px" }}>
@@ -151,7 +176,7 @@ export default function NewProject({ close }: newPrjProps) {
               name={"title"}
               control={control}
               render={({ field: { onChange, value } }) => (
-                <Box sx={{ width: "75%" }}>
+                <Box className={style.customTextField} sx={{ width: "75%" }}>
                   <TextField
                     autoFocus
                     sx={
@@ -439,7 +464,11 @@ export default function NewProject({ close }: newPrjProps) {
               <CustomButton
                 onClick={handleSubmit(onSubmit)}
                 className={style.createBtn}
+                disabled={isLoading}
               >
+                {isLoading && (
+                  <CircularProgress sx={{ marginRight: "10px" }} size={20} />
+                )}
                 Create Project
               </CustomButton>
               <CustomOutlineButton

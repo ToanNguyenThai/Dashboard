@@ -107,3 +107,12 @@
   color: #223354 !important;
   background-color: rgb(247, 247, 247) !important;
 }
+.customTextField fieldset {
+  border-radius: 10px !important;
+  border-color: #d3d3d3;
+}
+.invalid {
+  font-weight: 600;
+  font-size: 13px !important;
+  color: rgb(255, 25, 67);
+}

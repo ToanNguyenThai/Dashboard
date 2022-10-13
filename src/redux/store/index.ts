@@ -1,13 +1,13 @@
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer } from 'redux-persist';
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./rootReducer";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   version: 1,
   storage,
-  blacklist: ['email'],
+  blacklist: ["email", "project"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({

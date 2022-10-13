@@ -8,4 +8,8 @@ export const CustomButton = styled(Button)<ButtonProps>(({ theme }) => ({
   "&:hover": {
     backgroundColor: "#4454cc",
   },
+  "&.Mui-disabled": {
+    backgroundColor: "#f9fafc",
+    color: "#8a91ae",
+  },
 }));

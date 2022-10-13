@@ -1,5 +1,5 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-const name = 'email';
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+const name = "email";
 
 const initialState = {
   email: [
@@ -185,7 +185,7 @@ John </p> `,
       task: false,
       business: true,
     },
-  ]
+  ],
 };
 
 const emailSlice = createSlice({
@@ -193,25 +193,22 @@ const emailSlice = createSlice({
   initialState,
   reducers: {
     delete_single: (state, action) => {
-      let curr = state.email
-      curr.forEach(item => {
-        if (item.id === action.payload)
-          item.deleted = true
-      })
-      state.email = curr
+      let curr = state.email;
+      curr.forEach((item) => {
+        if (item.id === action.payload) item.deleted = true;
+      });
+      state.email = curr;
     },
     delete_multiple: (state, action) => {
-      let curr = state.email
-
-    }
-  },  
- 
+      let curr = state.email;
+    },
+  },
 });
 
-const selector = (state: { [x: string]: any; }) => state[name];
+const selector = (state: { [x: string]: any }) => state[name];
 const selectEmail = createSelector(selector, ({ email }) => email);
 export const emailSelectors = { selectEmail };
 
-const { delete_single, delete_multiple  } = emailSlice.actions;
+const { delete_single, delete_multiple } = emailSlice.actions;
 export const emailActions = { delete_single, delete_multiple };
 export default emailSlice.reducer;
