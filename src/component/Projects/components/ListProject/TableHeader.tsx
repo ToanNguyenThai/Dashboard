@@ -71,7 +71,7 @@ export default function TableHeader(props: TableHeaderProps) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align="left"
+            align={headCell.id === "actions" ? "center" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
           >
             {headCell.label}

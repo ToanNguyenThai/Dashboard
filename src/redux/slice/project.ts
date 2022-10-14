@@ -28,6 +28,16 @@ const ProjectList: ProjectState[] = [
     progress: 48,
     status: "Not started",
   },
+  {
+    id: uuidv4(),
+    title: "Felis libyca",
+    description: "",
+    tags: ["Design Project, Marketing Research"],
+    members: ["Hana Siprone", "Maria Calzoni"],
+    dueDate: "April 13 2026",
+    progress: 22,
+    status: "In progress",
+  },
 ];
 const initialState: initialStateType = {
   ProjectList,

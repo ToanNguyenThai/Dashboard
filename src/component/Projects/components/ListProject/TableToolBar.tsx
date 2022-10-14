@@ -3,9 +3,10 @@ import { HiDotsVertical } from "react-icons/hi";
 
 interface TableToolbarProps {
   numSelected: number;
+  numberOfProject: number;
 }
 export default function TableToolBar(props: TableToolbarProps) {
-  const { numSelected } = props;
+  const { numSelected, numberOfProject } = props;
   return (
     <Box>
       {numSelected > 0 ? (
@@ -14,7 +15,8 @@ export default function TableToolBar(props: TableToolbarProps) {
         </Typography>
       ) : (
         <Typography fontSize="14px" color="#223354B3">
-          Showing:
+          Showing:{" "}
+          <span style={{ fontWeight: "600" }}>{numberOfProject} projects</span>
         </Typography>
       )}
       {numSelected > 0 ? (
