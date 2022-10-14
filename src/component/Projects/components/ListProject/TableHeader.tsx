@@ -55,7 +55,12 @@ const headCells: readonly HeadCell[] = [
 export default function TableHeader(props: TableHeaderProps) {
   const { onSelectAllClick, numSelected, rowCount } = props;
   return (
-    <TableHead>
+    <TableHead
+      sx={{
+        backgroundColor: "#fbfbfc",
+        borderTop: "1px solid rgba(34, 51, 84, 0.1)",
+      }}
+    >
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
@@ -70,6 +75,12 @@ export default function TableHeader(props: TableHeaderProps) {
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
+            sx={{
+              padding: "18px 0px",
+              color: "#223354B3",
+              fontWeight: "600",
+              fontSize: "13px",
+            }}
             key={headCell.id}
             align={headCell.id === "actions" ? "center" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}

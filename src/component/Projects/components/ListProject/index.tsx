@@ -148,7 +148,14 @@ export default function ListProject() {
                       scope="row"
                       padding="none"
                     >
-                      {row.title}
+                      <Typography
+                        fontSize="14px"
+                        color="#223354"
+                        fontWeight="600"
+                      >
+                        {" "}
+                        {row.title}
+                      </Typography>
                     </TableCell>
                     <TableCell
                       className={style.rowItem}

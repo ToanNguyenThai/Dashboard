@@ -16,7 +16,9 @@ export default function TableToolBar(props: TableToolbarProps) {
       ) : (
         <Typography fontSize="14px" color="#223354B3">
           Showing:{" "}
-          <span style={{ fontWeight: "600" }}>{numberOfProject} projects</span>
+          <span style={{ fontWeight: "600", color: "#223354" }}>
+            {numberOfProject} projects
+          </span>
         </Typography>
       )}
       {numSelected > 0 ? (
