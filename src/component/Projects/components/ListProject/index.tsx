@@ -32,12 +32,15 @@ export interface TableData {
   actions: any;
 }
 export default function ListProject() {
-  const prjs = useSelector(projectSelectors.selectProject);
+  const prjs: ProjectState[] = useSelector(projectSelectors.selectProject);
   const [selected, setSelected] = useState<readonly string[]>([]);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [data, setData] = useState<ProjectState[]>([]);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
   useEffect(() => {
+    console.log(prjs);
+
     setData(prjs);
   }, [prjs]);
 
@@ -61,7 +64,7 @@ export default function ListProject() {
   };
   const isSelected = (name: string) => selected.indexOf(name) !== -1;
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - prjs.length) : 0;
 
   const handleCheck = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -113,148 +116,122 @@ export default function ListProject() {
           <TableHeader
             numSelected={selected.length}
             onSelectAllClick={handleSelectAllClick}
-            rowCount={data.length}
+            rowCount={prjs.length}
           />
           <TableBody>
-            {data
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => {
-                const isItemSelected = isSelected(row.title);
-                const labelId = `enhanced-table-checkbox-${index}`;
+            {data.map((row, index) => (
+              <TableRow
+                hover
+                role="checkbox"
+                // aria-checked={isItemSelected}
+                tabIndex={-1}
+                key={row.title}
+                // selected={isItemSelected}
+              >
+                <TableCell padding="checkbox">
+                  <Checkbox
+                    color="primary"
+                    // checked={isItemSelected}
 
-                return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    aria-checked={isItemSelected}
-                    tabIndex={-1}
-                    key={row.title}
-                    selected={isItemSelected}
+                    onChange={(event) => handleCheck(event, row.title)}
+                  />
+                </TableCell>
+                <TableCell
+                  className={style.rowItem}
+                  component="th"
+                  scope="row"
+                  padding="none"
+                >
+                  <Typography fontSize="14px" color="#223354" fontWeight="600">
+                    {" "}
+                    {row.title}
+                  </Typography>
+                </TableCell>
+                <TableCell
+                  className={style.rowItem}
+                  padding="none"
+                  align="left"
+                >
+                  {row?.tags?.map((item) => (
+                    <span>{item.title}</span>
+                  ))}
+                </TableCell>
+                <TableCell
+                  className={style.rowItem}
+                  padding="none"
+                  align="left"
+                >
+                  {row.dueDate}
+                  <br></br>
+                  Started: October 10 2022
+                </TableCell>
+                <TableCell
+                  className={style.rowItem}
+                  padding="none"
+                  align="left"
+                >
+                  {row?.members?.map((item) => (
+                    <span>{item.name}</span>
+                  ))}
+                </TableCell>
+                <TableCell
+                  className={style.rowItem}
+                  padding="none"
+                  align="left"
+                >
+                  <Box
+                    sx={{
+                      minWidth: "175px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
                   >
-                    <TableCell padding="checkbox">
-                      <Checkbox
-                        color="primary"
-                        checked={isItemSelected}
-                        inputProps={{
-                          "aria-labelledby": labelId,
-                        }}
-                        onChange={(event) => handleCheck(event, row.title)}
+                    <Box sx={{ width: "70%", mr: 1 }}>
+                      <CustomLinearProgress
+                        variant="determinate"
+                        value={row.progress}
                       />
-                    </TableCell>
-                    <TableCell
-                      className={style.rowItem}
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="none"
-                    >
-                      <Typography
-                        fontSize="14px"
-                        color="#223354"
-                        fontWeight="600"
-                      >
-                        {" "}
-                        {row.title}
+                    </Box>
+                    <Box sx={{ minWidth: 35 }}>
+                      <Typography variant="body2" color="#223354B3">
+                        {row.progress}%
                       </Typography>
-                    </TableCell>
-                    <TableCell
-                      className={style.rowItem}
-                      padding="none"
-                      align="left"
-                    >
-                      {row.tags}
-                    </TableCell>
-                    <TableCell
-                      className={style.rowItem}
-                      padding="none"
-                      align="left"
-                    >
-                      {row.dueDate}
-                      <br></br>
-                      Started: October 10 2022
-                    </TableCell>
-                    <TableCell
-                      className={style.rowItem}
-                      padding="none"
-                      align="left"
-                    >
-                      {/*    {row.members} */}
-                      members
-                    </TableCell>
-                    <TableCell
-                      className={style.rowItem}
-                      padding="none"
-                      align="left"
-                    >
-                      <Box
-                        sx={{
-                          minWidth: "175px",
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Box sx={{ width: "70%", mr: 1 }}>
-                          <CustomLinearProgress
-                            variant="determinate"
-                            value={row.progress}
-                          />
-                        </Box>
-                        <Box sx={{ minWidth: 35 }}>
-                          <Typography variant="body2" color="#223354B3">
-                            {row.progress}%
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </TableCell>
+                    </Box>
+                  </Box>
+                </TableCell>
 
-                    <TableCell
-                      className={style.rowItem}
-                      padding="none"
-                      align="left"
-                    >
-                      {renderStatus(row.status)}
-                    </TableCell>
-                    <TableCell
-                      className={style.rowItem}
-                      padding="none"
-                      align="center"
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <CustomWidthTooltip
-                          title="View"
-                          arrow
-                          placement="bottom"
-                        >
-                          <Box className={style.icon}>
-                            <BsBoxArrowUpRight fontSize="19px" />
-                          </Box>
-                        </CustomWidthTooltip>
-                        <CustomWidthTooltip
-                          title="Delete"
-                          arrow
-                          placement="bottom"
-                        >
-                          <Box
-                            /* onClick={() =>
-                              dispatch(
-                                emailActions.delete_single(thisEmail?.id)
-                              )
-                            } */
-                            className={style.icon}
-                          >
-                            <FaRegTrashAlt fontSize="19px" />
-                          </Box>
-                        </CustomWidthTooltip>
+                <TableCell
+                  className={style.rowItem}
+                  padding="none"
+                  align="left"
+                >
+                  {renderStatus(row.status)}
+                </TableCell>
+                <TableCell
+                  className={style.rowItem}
+                  padding="none"
+                  align="center"
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <CustomWidthTooltip title="View" arrow placement="bottom">
+                      <Box className={style.icon}>
+                        <BsBoxArrowUpRight fontSize="19px" />
                       </Box>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+                    </CustomWidthTooltip>
+                    <CustomWidthTooltip title="Delete" arrow placement="bottom">
+                      <Box className={style.icon}>
+                        <FaRegTrashAlt fontSize="19px" />
+                      </Box>
+                    </CustomWidthTooltip>
+                  </Box>
+                </TableCell>
+              </TableRow>
+            ))}
             {emptyRows > 0 && (
               <TableRow>
                 <TableCell colSpan={6} />
@@ -266,7 +243,7 @@ export default function ListProject() {
       <TablePagination
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={data.length}
+        count={prjs.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

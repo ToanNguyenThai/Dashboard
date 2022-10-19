@@ -73,7 +73,7 @@ export default function TableHeader(props: TableHeaderProps) {
             }}
           />
         </TableCell>
-        {headCells.map((headCell) => (
+        {headCells.map((headCell, index) => (
           <TableCell
             sx={{
               padding: "18px 0px",

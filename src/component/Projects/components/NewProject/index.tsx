@@ -112,6 +112,7 @@ export default function NewProject({ close }: newPrjProps) {
       progress: Math.floor(Math.random() * 100),
       status: status[Math.floor(Math.random() * status.length)],
     };
+
     dispatch(projectActions.createProject(newPrj));
 
     setTimeout(() => {

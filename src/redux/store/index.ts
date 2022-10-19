@@ -7,7 +7,7 @@ const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  blacklist: ["email", "project"],
+  blacklist: ["email" , "project"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({

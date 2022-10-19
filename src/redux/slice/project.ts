@@ -1,6 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProjectState } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
+import avatar from '../../assets/img/avatar.jpg'
 const name = "project";
 
 type initialStateType = {
@@ -12,8 +13,17 @@ const ProjectList: ProjectState[] = [
     id: uuidv4(),
     title: "Cebus apella",
     description: "",
-    tags: ["Software"],
-    members: ["Hana Siprone", "Maria Calzoni"],
+    tags: [{title: "Software"}],
+    members: [
+      {
+        name: 'Hana Siprone',
+        img: avatar
+      },
+      {
+        name: 'Maria Calzoni',
+        img: avatar
+      },
+    ],
     dueDate: "April 13 2026",
     progress: 56,
     status: "Completed",
@@ -22,8 +32,17 @@ const ProjectList: ProjectState[] = [
     id: uuidv4(),
     title: "Macropus agilis",
     description: "",
-    tags: ["Backend"],
-    members: ["Hana Siprone", "Maria Calzoni"],
+    tags: [{title:"Backend"}],
+    members: [
+      {
+        name: 'Hana Siprone',
+        img: avatar
+      },
+      {
+        name: 'Maria Calzoni',
+        img: avatar
+      },
+    ],
     dueDate: "April 13 2026",
     progress: 48,
     status: "Not started",
@@ -32,8 +51,17 @@ const ProjectList: ProjectState[] = [
     id: uuidv4(),
     title: "Felis libyca",
     description: "",
-    tags: ["Design Project, Marketing Research"],
-    members: ["Hana Siprone", "Maria Calzoni"],
+    tags: [{title: "Design Project"}, {title: 'Marketing Research'}],
+    members: [
+      {
+        name: 'Hana Siprone',
+        img: avatar
+      },
+      {
+        name: 'Maria Calzoni',
+        img: avatar
+      },
+    ],
     dueDate: "April 13 2026",
     progress: 22,
     status: "In progress",
