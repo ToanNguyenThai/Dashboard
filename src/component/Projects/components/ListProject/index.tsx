@@ -10,6 +10,9 @@ import {
   TablePagination,
   Box,
   Typography,
+  AvatarGroup,
+  Avatar,
+  Dialog,
 } from "@mui/material";
 
 import TableHeader from "./TableHeader";
@@ -21,6 +24,9 @@ import { projectSelectors } from "../../../../redux/slice/project";
 import { ProjectState } from "../../../../types/types";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { BsBoxArrowUpRight } from "react-icons/bs";
+
+import DeleteModal from "./DeleteModal";
+import { TransitionSlideDown } from "../../../UI-components/Transition";
 import style from "../../projects.module.css";
 export interface TableData {
   name: string;
@@ -38,10 +44,17 @@ export default function ListProject() {
   const [data, setData] = useState<ProjectState[]>([]);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
+  const [deleteId, setDeleteId] = useState("");
+  const [openDelete, setOpenDelete] = useState(false);
+  const handleOpenDelete = (id: string) => {
+    setOpenDelete(true);
+    setDeleteId(id);
+  };
+  const handleCloseDelete = () => setOpenDelete(false);
   useEffect(() => {
-    console.log(prjs);
-
-    setData(prjs);
+    setTimeout(() => {
+      setData(prjs);
+    }, 2000);
   }, [prjs]);
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -153,7 +166,7 @@ export default function ListProject() {
                   align="left"
                 >
                   {row?.tags?.map((item) => (
-                    <span>{item.title}</span>
+                    <a href="#">{item.title},</a>
                   ))}
                 </TableCell>
                 <TableCell
@@ -161,18 +174,34 @@ export default function ListProject() {
                   padding="none"
                   align="left"
                 >
-                  {row.dueDate}
                   <br></br>
-                  Started: October 10 2022
+                  Started: {row.dueDate}
                 </TableCell>
                 <TableCell
                   className={style.rowItem}
                   padding="none"
                   align="left"
                 >
-                  {row?.members?.map((item) => (
-                    <span>{item.name}</span>
-                  ))}
+                  <Box sx={{ display: "flex" }}>
+                    <AvatarGroup
+                      sx={{
+                        flexDirection: "row-reverse",
+                        justifyContent: "flex-start",
+                      }}
+                      max={3}
+                    >
+                      {row?.members?.map((item, index) => (
+                        <CustomWidthTooltip
+                          title={item.name}
+                          arrow
+                          placement="top"
+                          key={index}
+                        >
+                          <Avatar alt={item.name} src={item.img} />
+                        </CustomWidthTooltip>
+                      ))}
+                    </AvatarGroup>
+                  </Box>
                 </TableCell>
                 <TableCell
                   className={style.rowItem}
@@ -224,7 +253,10 @@ export default function ListProject() {
                       </Box>
                     </CustomWidthTooltip>
                     <CustomWidthTooltip title="Delete" arrow placement="bottom">
-                      <Box className={style.icon}>
+                      <Box
+                        onClick={() => handleOpenDelete(row.id)}
+                        className={style.icon}
+                      >
                         <FaRegTrashAlt fontSize="19px" />
                       </Box>
                     </CustomWidthTooltip>
@@ -249,6 +281,18 @@ export default function ListProject() {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+
+      <Dialog
+        open={openDelete}
+        onClose={handleCloseDelete}
+        className="modalBackdrop"
+        TransitionComponent={TransitionSlideDown}
+      >
+        <DeleteModal
+          deleteId={deleteId}
+          close={handleCloseDelete}
+        ></DeleteModal>
+      </Dialog>
     </PreviewCard>
   );
 }

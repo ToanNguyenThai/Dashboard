@@ -1,7 +1,12 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSelector,
+  createSlice,
+  PayloadAction,
+  current,
+} from "@reduxjs/toolkit";
 import { ProjectState } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
-import avatar from '../../assets/img/avatar.jpg'
+import avatar from "../../assets/img/avatar.jpg";
 const name = "project";
 
 type initialStateType = {
@@ -13,15 +18,31 @@ const ProjectList: ProjectState[] = [
     id: uuidv4(),
     title: "Cebus apella",
     description: "",
-    tags: [{title: "Software"}],
+    tags: [{ title: "Software" }],
     members: [
       {
-        name: 'Hana Siprone',
-        img: avatar
+        name: "Hana Siprone",
+        img: avatar,
       },
       {
-        name: 'Maria Calzoni',
-        img: avatar
+        name: "Maria Calzoni",
+        img: avatar,
+      },
+      {
+        name: "Haha",
+        img: avatar,
+      },
+      {
+        name: "Huhu",
+        img: avatar,
+      },
+      {
+        name: "Hihi",
+        img: avatar,
+      },
+      {
+        name: "Hehe",
+        img: avatar,
       },
     ],
     dueDate: "April 13 2026",
@@ -32,15 +53,15 @@ const ProjectList: ProjectState[] = [
     id: uuidv4(),
     title: "Macropus agilis",
     description: "",
-    tags: [{title:"Backend"}],
+    tags: [{ title: "Backend" }],
     members: [
       {
-        name: 'Hana Siprone',
-        img: avatar
+        name: "Hana Siprone",
+        img: avatar,
       },
       {
-        name: 'Maria Calzoni',
-        img: avatar
+        name: "Maria Calzoni",
+        img: avatar,
       },
     ],
     dueDate: "April 13 2026",
@@ -51,15 +72,19 @@ const ProjectList: ProjectState[] = [
     id: uuidv4(),
     title: "Felis libyca",
     description: "",
-    tags: [{title: "Design Project"}, {title: 'Marketing Research'}],
+    tags: [{ title: "Design Project" }, { title: "Marketing Research" }],
     members: [
       {
-        name: 'Hana Siprone',
-        img: avatar
+        name: "Hana Siprone",
+        img: avatar,
       },
       {
-        name: 'Maria Calzoni',
-        img: avatar
+        name: "Maria Calzoni",
+        img: avatar,
+      },
+      {
+        name: "Pep Guardiola",
+        img: avatar,
       },
     ],
     dueDate: "April 13 2026",
@@ -77,6 +102,12 @@ const projectSlice = createSlice({
     createProject: (state, action: PayloadAction<ProjectState>) => {
       state.ProjectList.push(action.payload);
     },
+    deleteProject: (state, action) => {
+      let deletedList = state.ProjectList.filter(
+        (item) => item.id !== action.payload
+      );
+      state.ProjectList = deletedList;
+    },
   },
 });
 
@@ -87,6 +118,6 @@ const selectProject = createSelector(
 );
 export const projectSelectors = { selectProject };
 
-const { createProject } = projectSlice.actions;
-export const projectActions = { createProject };
+const { createProject, deleteProject } = projectSlice.actions;
+export const projectActions = { createProject, deleteProject };
 export default projectSlice.reducer;

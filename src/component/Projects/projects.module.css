@@ -153,3 +153,53 @@
 .icon:hover {
   background-color: #e3e8fb;
 }
+/* Delete Modal */
+.deleteModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  border-radius: 10px;
+  outline: none !important;
+  transition: all linear 0.3s;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 45px;
+  height: 428px;
+}
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 100%;
+  background-color: #ffe8ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.cancelBtn {
+  padding: 12px 16px !important;
+  color: #5569ff !important;
+  border: none !important;
+}
+
+.cancelBtn:hover {
+  color: #5569ff !important;
+  border: none;
+  background-color: #edf0ff !important;
+}
+.deleteBtn {
+  text-transform: none !important;
+  padding: 11px 27px !important;
+  background-color: #ff1943 !important;
+  font-size: 15px !important;
+  margin-left: 20px !important;
+}
+.deleteBtn:hover {
+  background-color: #c01534 !important;
+}
