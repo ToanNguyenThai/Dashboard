@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   TableContainer,
   Table,
@@ -20,13 +20,18 @@ import TableToolBar from "./TableToolBar";
 import { PreviewCard } from "../../../UI-components/PreviewCard";
 import { CustomLinearProgress } from "../../../UI-components/CustomLinearProgress";
 import { CustomWidthTooltip } from "../../../UI-components/CustomWidthTooltip";
-import { projectSelectors } from "../../../../redux/slice/project";
+import {
+  projectSelectors,
+  projectActions,
+} from "../../../../redux/slice/project";
 import { ProjectState } from "../../../../types/types";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 
 import DeleteModal from "./DeleteModal";
 import { TransitionSlideDown } from "../../../UI-components/Transition";
+import Toast from "../../../UI-components/Toast";
+
 import style from "../../projects.module.css";
 export interface TableData {
   name: string;
@@ -44,6 +49,7 @@ interface TableSearch {
 export default function ListProject(props: TableSearch) {
   const { searchValue, projectStatusFilter } = props;
   const prjs: ProjectState[] = useSelector(projectSelectors.selectProject);
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState<readonly string[]>([]);
   const [page, setPage] = useState(0);
   const [data, setData] = useState<ProjectState[]>([]);
@@ -118,19 +124,19 @@ export default function ListProject(props: TableSearch) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  const isSelected = (name: string) => selected.indexOf(name) !== -1;
+  const isSelected = (id: string) => selected.indexOf(id) !== -1;
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - prjs.length) : 0;
 
   const handleCheck = (
     event: React.ChangeEvent<HTMLInputElement>,
-    name: string
+    id: string
   ) => {
-    const selectedIndex = selected.indexOf(name);
+    const selectedIndex = selected.indexOf(id);
     let newSelected: readonly string[] = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, id);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -159,6 +165,11 @@ export default function ListProject(props: TableSearch) {
         <Box className={`${style.statusBox} ${style.inProgress}`}>{status}</Box>
       );
   };
+
+  const deleteMultipleProject = () => {
+    dispatch(projectActions.deleteMultipleProject(selected));
+    Toast("success", "The projects has been deleted successfully", "top-right");
+  };
   return (
     <PreviewCard sx={{ marginTop: "30px" }}>
       <Box sx={{ padding: "18px" }}>
@@ -170,6 +181,7 @@ export default function ListProject(props: TableSearch) {
           page={page}
           handleChangeRowsPerPage={handleChangeRowsPerPage}
           handleChangePage={handleChangePage}
+          deleteMultipleProject={deleteMultipleProject}
         ></TableToolBar>
       </Box>
       <TableContainer>
@@ -182,145 +194,144 @@ export default function ListProject(props: TableSearch) {
           <TableBody>
             {data
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => (
-                <TableRow
-                  hover
-                  role="checkbox"
-                  // aria-checked={isItemSelected}
-                  tabIndex={-1}
-                  key={row.title}
-                  // selected={isItemSelected}
-                >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      color="primary"
-                      // checked={isItemSelected}
-
-                      onChange={(event) => handleCheck(event, row.title)}
-                    />
-                  </TableCell>
-                  <TableCell
-                    className={style.rowItem}
-                    component="th"
-                    scope="row"
-                    padding="none"
-                  >
-                    <Typography
-                      fontSize="14px"
-                      color="#223354"
-                      fontWeight="600"
+              .map((row) => {
+                const isItemSelected = isSelected(row.id);
+                return (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.title}>
+                    <TableCell padding="checkbox">
+                      <Checkbox
+                        color="primary"
+                        checked={isItemSelected}
+                        onChange={(event) => handleCheck(event, row.id)}
+                      />
+                    </TableCell>
+                    <TableCell
+                      className={style.rowItem}
+                      component="th"
+                      scope="row"
+                      padding="none"
                     >
-                      {" "}
-                      {row.title}
-                    </Typography>
-                  </TableCell>
-                  <TableCell
-                    className={style.rowItem}
-                    padding="none"
-                    align="left"
-                  >
-                    {row?.tags?.map((item) => (
-                      <a href="#">{item.title},</a>
-                    ))}
-                  </TableCell>
-                  <TableCell
-                    className={style.rowItem}
-                    padding="none"
-                    align="left"
-                  >
-                    Started: {row.dueDate}
-                  </TableCell>
-                  <TableCell
-                    className={style.rowItem}
-                    padding="none"
-                    align="left"
-                  >
-                    <Box sx={{ display: "flex" }}>
-                      <AvatarGroup
-                        sx={{
-                          flexDirection: "row-reverse",
-                          justifyContent: "flex-start",
-                        }}
-                        max={3}
+                      <Typography
+                        fontSize="14px"
+                        color="#223354"
+                        fontWeight="600"
                       >
-                        {row?.members?.map((item, index) => (
-                          <CustomWidthTooltip
-                            title={item.name}
-                            arrow
-                            placement="top"
-                            key={index}
-                          >
-                            <Avatar alt={item.name} src={item.img} />
-                          </CustomWidthTooltip>
-                        ))}
-                      </AvatarGroup>
-                    </Box>
-                  </TableCell>
-                  <TableCell
-                    className={style.rowItem}
-                    padding="none"
-                    align="left"
-                  >
-                    <Box
-                      sx={{
-                        minWidth: "175px",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
+                        {" "}
+                        {row.title}
+                      </Typography>
+                    </TableCell>
+                    <TableCell
+                      className={style.rowItem}
+                      padding="none"
+                      align="left"
                     >
-                      <Box sx={{ width: "70%", mr: 1 }}>
-                        <CustomLinearProgress
-                          variant="determinate"
-                          value={row.progress}
-                        />
-                      </Box>
-                      <Box sx={{ minWidth: 35 }}>
-                        <Typography variant="body2" color="#223354B3">
-                          {row.progress}%
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </TableCell>
-
-                  <TableCell
-                    className={style.rowItem}
-                    padding="none"
-                    align="left"
-                  >
-                    {renderStatus(row.status)}
-                  </TableCell>
-                  <TableCell
-                    className={style.rowItem}
-                    padding="none"
-                    align="center"
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
+                      {row?.tags?.map((item) => (
+                        <a href="#">{item.title},</a>
+                      ))}
+                    </TableCell>
+                    <TableCell
+                      className={style.rowItem}
+                      padding="none"
+                      align="left"
                     >
-                      <CustomWidthTooltip title="View" arrow placement="bottom">
-                        <Box className={style.icon}>
-                          <BsBoxArrowUpRight fontSize="19px" />
-                        </Box>
-                      </CustomWidthTooltip>
-                      <CustomWidthTooltip
-                        title="Delete"
-                        arrow
-                        placement="bottom"
-                      >
-                        <Box
-                          onClick={() => handleOpenDelete(row.id)}
-                          className={style.icon}
+                      Started: {row.dueDate}
+                    </TableCell>
+                    <TableCell
+                      className={style.rowItem}
+                      padding="none"
+                      align="left"
+                    >
+                      <Box sx={{ display: "flex" }}>
+                        <AvatarGroup
+                          sx={{
+                            flexDirection: "row-reverse",
+                            justifyContent: "flex-start",
+                          }}
+                          max={3}
                         >
-                          <FaRegTrashAlt fontSize="19px" />
+                          {row?.members?.map((item, index) => (
+                            <CustomWidthTooltip
+                              title={item.name}
+                              arrow
+                              placement="top"
+                              key={index}
+                            >
+                              <Avatar alt={item.name} src={item.img} />
+                            </CustomWidthTooltip>
+                          ))}
+                        </AvatarGroup>
+                      </Box>
+                    </TableCell>
+                    <TableCell
+                      className={style.rowItem}
+                      padding="none"
+                      align="left"
+                    >
+                      <Box
+                        sx={{
+                          minWidth: "175px",
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Box sx={{ width: "70%", mr: 1 }}>
+                          <CustomLinearProgress
+                            variant="determinate"
+                            value={row.progress}
+                          />
                         </Box>
-                      </CustomWidthTooltip>
-                    </Box>
-                  </TableCell>
-                </TableRow>
-              ))}
+                        <Box sx={{ minWidth: 35 }}>
+                          <Typography variant="body2" color="#223354B3">
+                            {row.progress}%
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </TableCell>
+
+                    <TableCell
+                      className={style.rowItem}
+                      padding="none"
+                      align="left"
+                    >
+                      {renderStatus(row.status)}
+                    </TableCell>
+                    <TableCell
+                      className={style.rowItem}
+                      padding="none"
+                      align="center"
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <CustomWidthTooltip
+                          title="View"
+                          arrow
+                          placement="bottom"
+                        >
+                          <Box className={style.icon}>
+                            <BsBoxArrowUpRight fontSize="19px" />
+                          </Box>
+                        </CustomWidthTooltip>
+                        <CustomWidthTooltip
+                          title="Delete"
+                          arrow
+                          placement="bottom"
+                        >
+                          <Box
+                            onClick={() => handleOpenDelete(row.id)}
+                            className={style.icon}
+                          >
+                            <FaRegTrashAlt fontSize="19px" />
+                          </Box>
+                        </CustomWidthTooltip>
+                      </Box>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>

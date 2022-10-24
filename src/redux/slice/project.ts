@@ -7,6 +7,7 @@ import {
 import { ProjectState } from "../../types/types";
 import { v4 as uuidv4 } from "uuid";
 import avatar from "../../assets/img/avatar.jpg";
+import { act } from "react-dom/test-utils";
 const name = "project";
 
 type initialStateType = {
@@ -95,6 +96,9 @@ const ProjectList: ProjectState[] = [
 const initialState: initialStateType = {
   ProjectList,
 };
+const removeMultiple = (arr: ProjectState[], ...theArgs: string[]) => {
+  return arr.filter((val) => !theArgs.includes(val.id));
+};
 const projectSlice = createSlice({
   name,
   initialState,
@@ -108,6 +112,10 @@ const projectSlice = createSlice({
       );
       state.ProjectList = deletedList;
     },
+    deleteMultipleProject: (state, action) => {
+      let deletedList = removeMultiple(state.ProjectList, ...action.payload);
+      state.ProjectList = deletedList;
+    },
   },
 });
 
@@ -118,6 +126,11 @@ const selectProject = createSelector(
 );
 export const projectSelectors = { selectProject };
 
-const { createProject, deleteProject } = projectSlice.actions;
-export const projectActions = { createProject, deleteProject };
+const { createProject, deleteProject, deleteMultipleProject } =
+  projectSlice.actions;
+export const projectActions = {
+  createProject,
+  deleteProject,
+  deleteMultipleProject,
+};
 export default projectSlice.reducer;

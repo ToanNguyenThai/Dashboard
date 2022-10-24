@@ -2,7 +2,7 @@ import { TableHead, TableRow, TableCell, Checkbox } from "@mui/material";
 import { TableData } from "../ListProject";
 interface TableHeaderProps {
   numSelected: number;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSelectAllClick: any;
   rowCount: number;
 }
 interface HeadCell {
@@ -68,9 +68,6 @@ export default function TableHeader(props: TableHeaderProps) {
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
-            inputProps={{
-              "aria-label": "select all desserts",
-            }}
           />
         </TableCell>
         {headCells.map((headCell, index) => (

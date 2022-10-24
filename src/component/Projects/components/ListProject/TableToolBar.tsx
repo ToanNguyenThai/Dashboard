@@ -1,6 +1,8 @@
 import { Typography, Box, IconButton, TablePagination } from "@mui/material";
+import { CustomButton } from "../../../UI-components/CustomButton";
 import { HiDotsVertical } from "react-icons/hi";
-
+import { FiTrash2 } from "react-icons/fi";
+import style from "../../projects.module.css";
 interface TableToolbarProps {
   dataLength: number;
   numSelected: number;
@@ -9,6 +11,7 @@ interface TableToolbarProps {
   page: number;
   handleChangePage: any;
   handleChangeRowsPerPage: any;
+  deleteMultipleProject: any;
 }
 export default function TableToolBar(props: TableToolbarProps) {
   const {
@@ -19,6 +22,7 @@ export default function TableToolBar(props: TableToolbarProps) {
     page,
     handleChangeRowsPerPage,
     handleChangePage,
+    deleteMultipleProject,
   } = props;
   return (
     <Box
@@ -31,6 +35,13 @@ export default function TableToolBar(props: TableToolbarProps) {
       {numSelected > 0 ? (
         <Typography fontSize="14px" color="#223354B3">
           Bulk actions:
+          <CustomButton
+            onClick={() => deleteMultipleProject()}
+            className={style.bulkButton}
+            startIcon={<FiTrash2 />}
+          >
+            Delete
+          </CustomButton>
         </Typography>
       ) : (
         <Typography fontSize="14px" color="#223354B3">
