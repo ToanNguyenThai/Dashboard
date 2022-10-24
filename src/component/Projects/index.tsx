@@ -20,8 +20,17 @@ const CustomDialog = styled(Dialog)({
 
 export default function Projects() {
   const [openNewProject, setOpenNewProject] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [projectStatusFilter, setProjectStatusFilter] = useState("");
   const handleOpenNewProject = () => setOpenNewProject(true);
   const handleCloseNewProject = () => setOpenNewProject(false);
+  const getSearchValue = (value: string) => {
+    setSearchValue(value);
+  };
+  const getProjectStatusFilter = (value: string) => {
+    console.log(value);
+    setProjectStatusFilter(value);
+  };
   return (
     <>
       <Box className={style.prjHeader}>
@@ -47,8 +56,14 @@ export default function Projects() {
         </CustomButton>
       </Box>
       <Box className={style.prjBody}>
-        <SearchProject></SearchProject>
-        <ListProject></ListProject>
+        <SearchProject
+          getSearchValue={getSearchValue}
+          getProjectStatusFilter={getProjectStatusFilter}
+        ></SearchProject>
+        <ListProject
+          searchValue={searchValue}
+          projectStatusFilter={projectStatusFilter}
+        ></ListProject>
       </Box>
       <CustomDialog
         open={openNewProject}

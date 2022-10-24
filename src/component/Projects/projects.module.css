@@ -203,3 +203,6 @@
 .deleteBtn:hover {
   background-color: #c01534 !important;
 }
+.footer_pagination {
+  padding: 18px !important;
+}

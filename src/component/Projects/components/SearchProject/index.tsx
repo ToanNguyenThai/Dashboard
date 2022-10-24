@@ -21,11 +21,16 @@ const projectTag = [
 const projectStatus = [
   { title: "All" },
   { title: "Not started" },
-  { title: "Complete" },
-  { title: "In Progress" },
+  { title: "Completed" },
+  { title: "In progress" },
 ];
 
-export default function SearchProject() {
+interface TableSearchProps {
+  getSearchValue: any;
+  getProjectStatusFilter: any;
+}
+export default function SearchProject(props: TableSearchProps) {
+  const { getSearchValue, getProjectStatusFilter } = props;
   const [view, setView] = useState<string | null>("list");
 
   const handleView = (
@@ -37,6 +42,7 @@ export default function SearchProject() {
   return (
     <PreviewCard sx={{ padding: "18px" }}>
       <TextField
+        onChange={(e) => getSearchValue(e.target.value)}
         sx={styleTextfield}
         fullWidth
         placeholder="Search by project name..."
@@ -62,7 +68,7 @@ export default function SearchProject() {
           id="tags-outlined"
           options={projectTag}
           getOptionLabel={(option) => option.title}
-          filterSelectedOptions
+          autoHighlight
           aria-label="Tags"
           renderInput={(params) => (
             <TextField {...params} sx={styleTextfield} label="Tags" />
@@ -71,11 +77,15 @@ export default function SearchProject() {
 
         <Autocomplete
           sx={{ width: "22%" }}
+          onChange={(event, newValue) => {
+            getProjectStatusFilter(newValue?.title);
+          }}
           id="tags-outlined"
           options={projectStatus}
           getOptionLabel={(option) => option.title}
           defaultValue={projectStatus[0]}
-          filterSelectedOptions
+          autoHighlight
+          disableClearable
           renderInput={(params) => (
             <TextField
               {...params}
