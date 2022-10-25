@@ -28,15 +28,17 @@ const projectStatus = [
 interface TableSearchProps {
   getSearchValue: any;
   getProjectStatusFilter: any;
+  getView: any;
 }
 export default function SearchProject(props: TableSearchProps) {
-  const { getSearchValue, getProjectStatusFilter } = props;
+  const { getSearchValue, getProjectStatusFilter, getView } = props;
   const [view, setView] = useState<string | null>("list");
 
   const handleView = (
     event: React.MouseEvent<HTMLElement>,
     newView: string | null
   ) => {
+    getView(newView);
     setView(newView);
   };
   return (

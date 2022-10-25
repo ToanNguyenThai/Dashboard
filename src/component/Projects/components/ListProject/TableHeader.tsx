@@ -70,7 +70,7 @@ export default function TableHeader(props: TableHeaderProps) {
             onChange={onSelectAllClick}
           />
         </TableCell>
-        {headCells.map((headCell, index) => (
+        {headCells.map((headCell) => (
           <TableCell
             sx={{
               padding: "18px 0px",

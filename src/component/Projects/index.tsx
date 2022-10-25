@@ -22,6 +22,8 @@ export default function Projects() {
   const [openNewProject, setOpenNewProject] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [projectStatusFilter, setProjectStatusFilter] = useState("");
+  const [view, setView] = useState("list");
+
   const handleOpenNewProject = () => setOpenNewProject(true);
   const handleCloseNewProject = () => setOpenNewProject(false);
   const getSearchValue = (value: string) => {
@@ -31,6 +33,11 @@ export default function Projects() {
     console.log(value);
     setProjectStatusFilter(value);
   };
+
+  const getView = (value: string) => {
+    setView(value);
+  };
+
   return (
     <>
       <Box className={style.prjHeader}>
@@ -59,10 +66,12 @@ export default function Projects() {
         <SearchProject
           getSearchValue={getSearchValue}
           getProjectStatusFilter={getProjectStatusFilter}
+          getView={getView}
         ></SearchProject>
         <ListProject
           searchValue={searchValue}
           projectStatusFilter={projectStatusFilter}
+          view={view}
         ></ListProject>
       </Box>
       <CustomDialog
