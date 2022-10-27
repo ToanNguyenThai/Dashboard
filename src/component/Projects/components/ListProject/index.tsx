@@ -149,36 +149,35 @@ export default function ListProject(props: TableSearch) {
     dispatch(projectActions.deleteMultipleProject(selected));
     Toast("success", "The projects has been deleted successfully", "top-right");
   };
-  return (
-    <PreviewCard sx={{ marginTop: "30px" }}>
-      <Box sx={{ padding: "18px" }}>
-        <TableToolBar
-          dataLength={numberOfCurrentRow}
-          numSelected={selected.length}
-          numberOfProject={prjs.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          handleChangeRowsPerPage={handleChangeRowsPerPage}
-          handleChangePage={handleChangePage}
-          deleteMultipleProject={deleteMultipleProject}
-        ></TableToolBar>
-      </Box>
-      <TableContainer>
-        <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
-          {view === "list" && (
+
+  if (view === "list") {
+    return (
+      <PreviewCard sx={{ marginTop: "30px" }}>
+        <Box sx={{ padding: "18px" }}>
+          <TableToolBar
+            dataLength={numberOfCurrentRow}
+            numSelected={selected.length}
+            numberOfProject={prjs.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+            handleChangePage={handleChangePage}
+            deleteMultipleProject={deleteMultipleProject}
+          ></TableToolBar>
+        </Box>
+        <TableContainer>
+          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
             <TableHeader
               numSelected={selected.length}
               onSelectAllClick={handleSelectAllClick}
               rowCount={prjs.length}
             />
-          )}
 
-          <TableBody>
-            {data
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                const isItemSelected = isSelected(row.id);
-                if (view === "list") {
+            <TableBody>
+              {data
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => {
+                  const isItemSelected = isSelected(row.id);
                   return (
                     <TableView
                       row={row}
@@ -187,41 +186,86 @@ export default function ListProject(props: TableSearch) {
                       handleCheck={handleCheck}
                     ></TableView>
                   );
-                } else
-                  return (
-                    <GridView
-                      row={row}
-                      isItemSelected={isItemSelected}
-                      handleOpenDelete={handleOpenDelete}
-                      handleCheck={handleCheck}
-                    ></GridView>
-                  );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        className={style.footer_pagination}
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={prjs.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
-      <Dialog
-        open={openDelete}
-        onClose={handleCloseDelete}
-        className="modalBackdrop"
-        TransitionComponent={TransitionSlideDown}
-      >
-        <DeleteModal
-          deleteId={deleteId}
-          close={handleCloseDelete}
-        ></DeleteModal>
-      </Dialog>
-    </PreviewCard>
-  );
+        <TablePagination
+          className={style.footer_pagination}
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={prjs.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+
+        <Dialog
+          open={openDelete}
+          onClose={handleCloseDelete}
+          className="modalBackdrop"
+          TransitionComponent={TransitionSlideDown}
+        >
+          <DeleteModal
+            deleteId={deleteId}
+            close={handleCloseDelete}
+          ></DeleteModal>
+        </Dialog>
+      </PreviewCard>
+    );
+  } else {
+    return (
+      <Box sx={{ marginTop: "30px" }}>
+        <PreviewCard sx={{ padding: "18px" }}>
+          <TableToolBar
+            dataLength={numberOfCurrentRow}
+            numSelected={selected.length}
+            numberOfProject={prjs.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+            handleChangePage={handleChangePage}
+            deleteMultipleProject={deleteMultipleProject}
+          ></TableToolBar>
+        </PreviewCard>
+        <Box
+          sx={{
+            margin: "20px 0px",
+            display: "grid",
+            gap: "20px 20px",
+            gridTemplateColumns: "max-content max-content max-content",
+          }}
+        >
+          {data
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((row, index) => {
+              const isItemSelected = isSelected(row.id);
+              return (
+                <GridView
+                  index={index}
+                  row={row}
+                  isItemSelected={isItemSelected}
+                  handleOpenDelete={handleOpenDelete}
+                  handleCheck={handleCheck}
+                ></GridView>
+              );
+            })}
+        </Box>
+
+        <Dialog
+          open={openDelete}
+          onClose={handleCloseDelete}
+          className="modalBackdrop"
+          TransitionComponent={TransitionSlideDown}
+        >
+          <DeleteModal
+            deleteId={deleteId}
+            close={handleCloseDelete}
+          ></DeleteModal>
+        </Dialog>
+      </Box>
+    );
+  }
 }
